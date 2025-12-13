@@ -1,0 +1,7 @@
+streamlit
+httpx
+beautifulsoup4
+lxml
+asyncio
+xmltodict
+chardet
