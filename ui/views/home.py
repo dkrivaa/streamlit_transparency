@@ -3,13 +3,17 @@ import asyncio
 
 
 async def my_async():
-    return asyncio.run(asyncio.sleep(1, result="Async Result"))
+    await asyncio.sleep(2)
+    return "Async operation complete!"
 
 
 def render():
     st.title("Welcome to the Home Page")
     st.write("This is the main landing page of the application.")
-    asyncio.run(my_async())
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    result = loop.run_until_complete(my_async())
+    st.write(result)
 
 
 if __name__ == "__main__":
