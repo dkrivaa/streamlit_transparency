@@ -2,7 +2,7 @@ import streamlit as st
 
 home_page = st.Page(
     title='Home',
-    page='ui.views/home.py',
+    page='ui/views/home.py',
     default=True
 )
 
