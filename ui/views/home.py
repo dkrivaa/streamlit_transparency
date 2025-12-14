@@ -18,7 +18,7 @@ def render():
     chain_alias = 'shufersal'
     chain = get_chain_class_by_alias(chain_alias)
     st.write(f"Loaded chain: {chain.name} ({chain.alias})")
-    stores = run_async(chain.stores)
+    stores = run_async(chain.prices)
     st.write(stores)
 
 
