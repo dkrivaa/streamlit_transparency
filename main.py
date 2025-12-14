@@ -1,5 +1,8 @@
 import streamlit as st
 
+from backend.data.super_class import SupermarketChain
+from backend.data.shufersal import Shufersal
+
 home_page = st.Page(
     title='Home',
     page='ui/views/home.py',
