@@ -68,7 +68,11 @@ async def url_request(
     except httpx.HTTPStatusError as e:
         return {"Error": f"HTTP error: {e.response.status_code} - {e.response.text}"}
     except httpx.RequestError as e:
-        return {"Error": f"Request error: {str(e)}"}
+        # return {"Error": f"Request error: {str(e)}"}
+        return {
+            "Error": repr(e),
+            "Type": type(e).__name__
+        }
 
     finally:
         if owns_client:
