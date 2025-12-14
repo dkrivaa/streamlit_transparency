@@ -5,3 +5,4 @@ lxml
 asyncio
 xmltodict
 chardet
+crawl4ai
