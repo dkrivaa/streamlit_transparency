@@ -4,7 +4,7 @@ import asyncio
 from backend.data.super_class import SupermarketChain
 
 
-def run_async(coro, *args, **kwargs):
+def run_async(coro):
     """ Run an async coroutine in a synchronous context. """
     try:
         loop = asyncio.get_event_loop()
@@ -12,13 +12,12 @@ def run_async(coro, *args, **kwargs):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
-    # Always create the coroutine object first
-    coro_obj = coro(*args, **kwargs)
+
 
     if loop.is_running():
-        return asyncio.create_task(coro_obj)
+        return asyncio.create_task(coro)
     else:
-        return loop.run_until_complete(coro_obj)
+        return loop.run_until_complete(coro)
 
 
 async def url_request(
