@@ -1,6 +1,8 @@
 import streamlit as st
 import asyncio
 
+from backend.utilities.general import run_async
+
 
 async def my_async():
     await asyncio.sleep(2)
@@ -10,9 +12,7 @@ async def my_async():
 def render():
     st.title("Welcome to the Home Page")
     st.write("This is the main landing page of the application.")
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    result = loop.run_until_complete(my_async())
+    result = run_async(my_async())
     st.write(result)
 
 
