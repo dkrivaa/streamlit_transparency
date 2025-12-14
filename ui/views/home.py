@@ -15,14 +15,14 @@ def render():
     st.divider()
 
     option_map = {
-        0: ':material/attach_money:',
-        1: ':material/list:'
+        0: [':material/attach_money:', 'check price'],
+        1: [':material/list:', 'shooping list'],
     }
 
     selection = st.pills(
         'Select',
         options=option_map.keys(),
-        format_func=lambda option: option_map[option],
+        format_func=lambda option: f'{option_map[option][0]}, {option_map[option][1]}',
         selection_mode="single",
     )
 
