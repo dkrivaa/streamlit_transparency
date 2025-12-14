@@ -14,8 +14,17 @@ def render():
     st.subheader('Supermarket Price Transparency')
     st.divider()
 
-    st.image('https://pics.freeicons.io/uploads/icons/png/10879295351634472857-64.png',
-             width=100)
+    option_map = {
+        0: ':material/attach_money:',
+        1: ':material/list:'
+    }
+
+    selection = st.pills(
+        'Select',
+        options=option_map.keys(),
+        format_func=lambda option: option_map[option],
+        selection_mode="single",
+    )
 
 
     # chain_alias = 'ramilevi'
