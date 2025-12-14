@@ -15,8 +15,8 @@ def render():
     st.divider()
 
     option_map = {
-        0: [':material/attach_money:', 'check price'],
-        1: [':material/list:', 'shopping list'],
+        0: [':material/attach_money:', 'Check product price'],
+        1: [':material/list:', 'Compare shopping list prices'],
     }
 
     selection = st.pills(
