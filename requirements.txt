@@ -6,3 +6,4 @@ asyncio
 xmltodict
 chardet
 crawl4ai
+playwright
