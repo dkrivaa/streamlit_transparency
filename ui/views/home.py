@@ -16,7 +16,7 @@ def render():
 
     option_map = {
         0: [':material/attach_money:', 'check price'],
-        1: [':material/list:', 'shooping list'],
+        1: [':material/list:', 'shopping list'],
     }
 
     selection = st.pills(
