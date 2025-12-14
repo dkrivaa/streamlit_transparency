@@ -8,14 +8,9 @@ from backend.data.publishedprices import RamiLevi
 from backend.utilities.general import get_chain_class_by_alias
 
 
-async def my_async():
-    await asyncio.sleep(2)
-    return "Async operation complete!"
-
-
 def render():
+    """ The main function to render the home page """
     st.title("Welcome to the Home Page")
-    st.write("This is the main landing page of the application.")
     chain_alias = 'ramilevi'
     chain = get_chain_class_by_alias(chain_alias)
     st.write(f"Loaded chain: {chain.name} ({chain.alias})")
