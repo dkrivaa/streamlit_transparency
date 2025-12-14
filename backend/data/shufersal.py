@@ -3,7 +3,7 @@ import asyncio
 from bs4 import BeautifulSoup
 
 from backend.data.super_class import SupermarketChain
-from utilities.general import url_request
+from backend.utilities.general import url_request
 
 
 class Shufersal(SupermarketChain):
