@@ -12,10 +12,13 @@ def run_async(coro, *args, **kwargs):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
-    if loop.is_running():
-        return asyncio.create_task(coro, *args, **kwargs)
-    else:
-        return loop.run_until_complete(coro(*args, **kwargs))
+        # Always create the coroutine object first
+        coro_obj = coro(*args, **kwargs)
+
+        if loop.is_running():
+            return asyncio.create_task(coro_obj)
+        else:
+            return loop.run_until_complete(coro_obj)
 
 
 async def url_request(
