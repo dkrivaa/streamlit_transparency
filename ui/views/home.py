@@ -22,7 +22,7 @@ def render():
     selection = st.pills(
         'Select',
         options=option_map.keys(),
-        format_func=lambda option: f'{option_map[option][0]}, {option_map[option][1]}',
+        format_func=lambda option: f'{option_map[option][0]} {option_map[option][1]}',
         selection_mode="single",
     )
 
