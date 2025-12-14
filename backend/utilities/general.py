@@ -13,9 +13,9 @@ def run_async(coro, *args, **kwargs):
         asyncio.set_event_loop(loop)
 
     if loop.is_running():
-        return asyncio.create_task(coro)
+        return asyncio.create_task(coro, *args, **kwargs)
     else:
-        return loop.run_until_complete(coro)
+        return loop.run_until_complete(coro(*args, **kwargs))
 
 
 async def url_request(
