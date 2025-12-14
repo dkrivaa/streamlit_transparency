@@ -26,6 +26,8 @@ def render():
         selection_mode="single",
     )
 
+    st.write(selection)
+
 
     # chain_alias = 'ramilevi'
     # chain = get_chain_class_by_alias(chain_alias)
