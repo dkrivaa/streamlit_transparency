@@ -1,8 +1,3 @@
-from playwright.sync_api import sync_playwright
-with sync_playwright() as p:
-    # Forces download of Chromium
-    p.chromium.launch(headless=True)
-
 import streamlit as st
 
 from backend.data.super_class import SupermarketChain
