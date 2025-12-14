@@ -1,3 +1,6 @@
+import subprocess
+subprocess.run(["playwright", "install", "chromium"], check=True)
+
 import streamlit as st
 
 from backend.data.super_class import SupermarketChain
