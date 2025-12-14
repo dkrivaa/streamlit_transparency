@@ -11,7 +11,8 @@ from backend.utilities.general import get_chain_class_by_alias
 def render():
     """ The main function to render the home page """
     st.title("Welcome to the Home Page")
-    st.image('https://images.unsplash.com/photo-1677751177812-eef0b47b888d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3JvY2VyeSUyMHByaWNlc3xlbnwwfHwwfHx8MA%3D%3D')
+    st.image('https://images.unsplash.com/photo-1677751177812-eef0b47b888d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3JvY2VyeSUyMHByaWNlc3xlbnwwfHwwfHx8MA%3D%3D',
+             width=100)
 
 
     chain_alias = 'ramilevi'
