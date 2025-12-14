@@ -16,7 +16,7 @@ def render():
     st.title("Welcome to the Home Page")
     st.write("This is the main landing page of the application.")
     chain_alias = 'shufersal'
-    chain = run_async(get_chain_class_by_alias(chain_alias))
+    chain = run_async(get_chain_class_by_alias(alias=chain_alias))
     st.write(f"Loaded chain: {chain.name} ({chain.alias})")
 
 
