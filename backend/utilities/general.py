@@ -48,7 +48,7 @@ async def url_request(
         client = httpx.AsyncClient(
             verify=False,
             cookies=cookies,
-            timeout=httpx.Timeout(15.0),
+            timeout=httpx.Timeout(30.0),
         )
 
     else:
