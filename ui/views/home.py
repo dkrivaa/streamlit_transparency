@@ -15,18 +15,18 @@ def render():
     st.divider()
 
     option_map = {
-        0: [':material/attach_money:', 'Check product price'],
-        1: [':material/list:', 'Compare shopping list prices'],
+        0: {'icon': ':material/attach_money:', 'text': 'Check product price', 'page': 'ui/views/check_price.py'},
+        1: {'icon': ':material/list:', 'text': 'Compare shopping list prices', 'page': 'ui/views/shopping_list.py'},
     }
 
     selection = st.pills(
         'Select',
         options=option_map.keys(),
-        format_func=lambda option: f'{option_map[option][0]} {option_map[option][1]}',
+        format_func=lambda option: f'{option_map[option]['icon']} {option_map[option]['text']}',
         selection_mode="single",
+        default=None,
     )
 
-    st.write(selection)
 
 
     # chain_alias = 'ramilevi'
