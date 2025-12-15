@@ -3,8 +3,8 @@ import asyncio
 
 from backend.utilities.general import run_async
 from backend.data.super_class import SupermarketChain
-from backend.data.shufersal import Shufersal
-from backend.data.publishedprices import RamiLevi
+# from backend.data.shufersal import Shufersal
+# from backend.data.publishedprices import RamiLevi
 from backend.utilities.general import get_chain_class_by_alias
 
 
@@ -13,6 +13,8 @@ def render():
     st.title("CLARITY")
     st.subheader('Supermarket Price Transparency')
     st.divider()
+
+    st.write(SupermarketChain.registry)
 
     option_map = {
         0: {'icon': ':material/attach_money:', 'text': 'Check product price', 'page': 'ui/views/check_price.py'},

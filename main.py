@@ -5,6 +5,7 @@ import streamlit as st
 
 from backend.data.super_class import SupermarketChain
 from backend.data.shufersal import Shufersal
+from backend.data.publishedprices import PublishedPrices
 
 home_page = st.Page(
     title='Home',
