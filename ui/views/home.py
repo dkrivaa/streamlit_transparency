@@ -25,7 +25,6 @@ def render():
         format_func=lambda option: f'{option_map[option]['icon']} {option_map[option]['text']}',
         selection_mode="single",
         default=None,
-        # on_change=lambda: st.switch_page(option_map[selection]['page'])
     )
 
     if selection is not None:
