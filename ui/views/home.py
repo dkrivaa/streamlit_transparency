@@ -29,7 +29,8 @@ def render():
     )
 
     st.write(selection)
-    st.switch_page(option_map[selection]['page'])
+    if selection is not None:
+        st.switch_page(option_map[selection]['page'])
 
 
 
