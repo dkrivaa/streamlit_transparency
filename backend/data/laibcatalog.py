@@ -152,7 +152,7 @@ class LaibCatalog(SupermarketChain):
         return [d for d in price_data if search_term in d['ItemName']]
 
 
-class Victory(LaibCatalogs):
+class Victory(LaibCatalog):
     abstract = False
     name = 'ויקטורי רשת סופרמרקטים בע"מ'
     alias = 'victory'
@@ -161,7 +161,7 @@ class Victory(LaibCatalogs):
     link_type = 'laibcatalog'
 
 
-class HCohen(LaibCatalogs):
+class HCohen(LaibCatalog):
     abstract = False
     name = 'ח. כהן סוכנות מזון ומשקאות בע"מ'
     alias = 'hcohen'
@@ -170,7 +170,7 @@ class HCohen(LaibCatalogs):
     link_type = 'laibcatalog'
 
 
-class KnMarket(LaibCatalogs):
+class KnMarket(LaibCatalog):
     abstract = False
     name = 'כ.נ מחסני השוק בע"מ'
     alias = 'knmarket'
