@@ -28,7 +28,7 @@ def render():
         # on_change=lambda: st.switch_page(option_map[selection]['page'])
     )
 
-    st.write(option_map[selection]['page'])
+    st.switch_page(option_map[selection]['page'])
 
 
 
