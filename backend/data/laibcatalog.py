@@ -7,7 +7,7 @@ from utilities.general import url_request
 from data.super_class import SupermarketChain
 
 
-class LaibCatalogs(SupermarketChain):
+class LaibCatalog(SupermarketChain):
     abstract = True
 
     @classmethod
