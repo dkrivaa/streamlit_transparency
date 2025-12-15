@@ -3,8 +3,8 @@ import asyncio
 import re
 import json
 
-from utilities.general import url_request
-from data.super_class import SupermarketChain
+from backend.utilities.general import url_request
+from backend.data.super_class import SupermarketChain
 
 
 class CarrefourParent(SupermarketChain):
