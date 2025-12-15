@@ -24,6 +24,6 @@ shopping_list_page = st.Page(
 
 
 pages = [home_page, check_price_page, shopping_list_page]
-pg = st.navigation(pages=pages, position='hidden')
+pg = st.navigation(pages=pages, position='top')
 
 pg.run()
