@@ -9,7 +9,6 @@ from backend.utilities.general import get_chain_class_by_alias
 def render():
     """ The main function to render the check price page """
     st.title("Check Product Price")
-    st.subheader('Enter product details to check the price across supermarkets')
     st.divider()
 
     # chain_alias = 'ramilevi'

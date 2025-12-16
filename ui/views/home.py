@@ -5,8 +5,8 @@ import streamlit as st
 def options():
     """ Returns dict of options for home page navigation """
     return {
-        0: {'icon': ':material/attach_money:', 'text': 'Check product price', 'page': 'ui/views/check_price.py'},
-        1: {'icon': ':material/list:', 'text': 'Compare shopping list prices', 'page': 'ui/views/shopping_list.py'},
+        0: {'icon': ':material/attach_money:', 'text': 'I am shopping', 'page': 'ui/views/check_price.py'},
+        1: {'icon': ':material/list:', 'text': 'Plan my shopping', 'page': 'ui/views/shopping_list.py'},
     }
 
 
@@ -32,12 +32,6 @@ def render():
     # Navigate to selected page
     if selection is not None:
         st.switch_page(option_map[selection]['page'])
-
-    # chain_alias = 'ramilevi'
-    # chain = get_chain_class_by_alias(chain_alias)
-    # st.write(f"Loaded chain: {chain.name} ({chain.alias})")
-    # stores = run_async(chain.prices, store_code=1)
-    # st.write(stores)
 
 
 if __name__ == "__main__":
