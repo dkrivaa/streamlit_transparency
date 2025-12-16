@@ -6,6 +6,11 @@ from backend.data.super_class import SupermarketChain
 from backend.utilities.general import get_chain_class_by_alias
 
 
+def sort_classes_by_alias(classes: list[type]) -> list[type]:
+    """ Sorts the given list of classes by their alias attribute """
+    return sorted(classes, key=lambda x: x.alias)
+
+
 def render():
     """ The main function to render the check price page """
     st.title("Check Product Price")
@@ -16,8 +21,8 @@ def render():
         chain = st.selectbox(
             label="Select Supermarket Chain",
             label_visibility='hidden',
-            options=[cls for cls in SupermarketChain.registry],
-            format_func=lambda x: sorted(x.alias.capitalize()),
+            options=sort_classes_by_alias(SupermarketChain.registry),
+            format_func=lambda x: x.alias.capitalize(),
             index=None,
             placeholder="Select Supermarket Chain",
         )
