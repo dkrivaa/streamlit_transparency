@@ -17,7 +17,7 @@ def render():
             label="Select Supermarket Chain",
             label_visibility='hidden',
             options=[cls for cls in SupermarketChain.registry],
-            format_func=lambda x: x.alias.capitalize(),
+            format_func=lambda x: sorted(x.alias.capitalize()),
             index=None,
             placeholder="Select Supermarket Chain",
         )
