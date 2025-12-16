@@ -27,7 +27,6 @@ def render():
             placeholder="Select Supermarket Chain",
         )
 
-    st.write(chain)
     # chain = get_chain_class_by_alias(chain_alias)
     # st.write(f"Loaded chain: {chain.name} ({chain.alias})")
     # stores = run_async(chain.prices, store_code=1)
