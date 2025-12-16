@@ -16,7 +16,7 @@ def render():
         chain = st.selectbox(
             label="Select Supermarket Chain",
             label_visibility='hidden',
-            options=sorted([cls for cls in SupermarketChain.registry]),
+            options=[cls for cls in SupermarketChain.registry],
             format_func=lambda x: x.alias.capitalize(),
             index=None,
             placeholder="Select Supermarket Chain",
