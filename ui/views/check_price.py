@@ -16,12 +16,13 @@ def render():
         chain = st.selectbox(
             label="Select Supermarket Chain",
             label_visibility='hidden',
-            options=sorted([cls.alias.capitalize() for cls in SupermarketChain.registry]),
+            options=sorted([cls for cls in SupermarketChain.registry]),
+            format_func=lambda x: x.alias.capitalize(),
             index=None,
             placeholder="Select Supermarket Chain",
         )
 
-    # chain_alias = 'ramilevi'
+    st.write(chain)
     # chain = get_chain_class_by_alias(chain_alias)
     # st.write(f"Loaded chain: {chain.name} ({chain.alias})")
     # stores = run_async(chain.prices, store_code=1)
