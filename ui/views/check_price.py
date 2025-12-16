@@ -11,6 +11,13 @@ def render():
     st.title("Check Product Price")
     st.divider()
 
+    with st.container():
+        st.subheader("Where are you shopping?")
+        chain = st.selectbox(
+            "Select Supermarket Chain",
+            options=[cls.alias.capitalize() for cls in SupermarketChain.registry],
+        )
+
     # chain_alias = 'ramilevi'
     # chain = get_chain_class_by_alias(chain_alias)
     # st.write(f"Loaded chain: {chain.name} ({chain.alias})")
