@@ -15,7 +15,7 @@ def render():
         st.subheader("Where are you shopping?")
         chain = st.selectbox(
             "Select Supermarket Chain",
-            options=[cls.alias.capitalize() for cls in SupermarketChain.registry],
+            options=sorted([cls.alias.capitalize() for cls in SupermarketChain.registry]),
         )
 
     # chain_alias = 'ramilevi'
