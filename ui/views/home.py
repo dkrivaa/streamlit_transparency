@@ -1,11 +1,13 @@
 import streamlit as st
-import asyncio
 
-from backend.utilities.general import run_async
-from backend.data.super_class import SupermarketChain
-# from backend.data.shufersal import Shufersal
-# from backend.data.publishedprices import RamiLevi
-from backend.utilities.general import get_chain_class_by_alias
+
+
+def options():
+    """ Returns dict of options for home page navigation """
+    return {
+        0: {'icon': ':material/attach_money:', 'text': 'Check product price', 'page': 'ui/views/check_price.py'},
+        1: {'icon': ':material/list:', 'text': 'Compare shopping list prices', 'page': 'ui/views/shopping_list.py'},
+    }
 
 
 def render():
@@ -16,10 +18,7 @@ def render():
     st.divider()
 
     # Options for navigation
-    option_map = {
-        0: {'icon': ':material/attach_money:', 'text': 'Check product price', 'page': 'ui/views/check_price.py'},
-        1: {'icon': ':material/list:', 'text': 'Compare shopping list prices', 'page': 'ui/views/shopping_list.py'},
-    }
+    option_map = options()
 
     # Pills selection for navigation
     selection = st.pills(

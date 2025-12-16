@@ -1,0 +1,23 @@
+import streamlit as st
+import asyncio
+
+from backend.utilities.general import run_async
+from backend.data.super_class import SupermarketChain
+from backend.utilities.general import get_chain_class_by_alias
+
+
+def render():
+    """ The main function to render the check price page """
+    st.title("Check Product Price")
+    st.subheader('Enter product details to check the price across supermarkets')
+    st.divider()
+
+    # chain_alias = 'ramilevi'
+    # chain = get_chain_class_by_alias(chain_alias)
+    # st.write(f"Loaded chain: {chain.name} ({chain.alias})")
+    # stores = run_async(chain.prices, store_code=1)
+    # st.write(stores)
+
+
+if __name__ == "__main__":
+    render()
