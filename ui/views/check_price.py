@@ -14,8 +14,11 @@ def render():
     with st.container(border=True):
         st.subheader("Where are you shopping?")
         chain = st.selectbox(
-            "Select Supermarket Chain",
+            label="Select Supermarket Chain",
+            label_visibility='hidden',
             options=sorted([cls.alias.capitalize() for cls in SupermarketChain.registry]),
+            index=None,
+            placeholder="Select Supermarket Chain",
         )
 
     # chain_alias = 'ramilevi'
