@@ -11,7 +11,7 @@ def render():
     st.title("Check Product Price")
     st.divider()
 
-    with st.container():
+    with st.container(border=True):
         st.subheader("Where are you shopping?")
         chain = st.selectbox(
             "Select Supermarket Chain",
