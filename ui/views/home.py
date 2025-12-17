@@ -1,7 +1,6 @@
 import streamlit as st
 
 
-
 def options():
     """ Returns dict of options for home page navigation """
     return {

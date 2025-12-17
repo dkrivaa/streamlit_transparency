@@ -28,8 +28,13 @@ shopping_list_page = st.Page(
     page='ui/views/shopping_list.py',
 )
 
+db_page = st.Page(
+    title='Database',
+    page='ui/views/database.py',
+)
 
-pages = [home_page, check_price_page, shopping_list_page]
+
+pages = [home_page, check_price_page, shopping_list_page, db_page]
 pg = st.navigation(pages=pages, position='top')
 
 pg.run()
