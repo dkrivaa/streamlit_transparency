@@ -16,7 +16,7 @@ def render():
 
     if st.button("Create Database"):
         with st.spinner("Creating database..."):
-            run_async(create_db())
+            run_async(create_db)
         st.success("✅ Database and tables created successfully!")
 
 
