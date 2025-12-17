@@ -5,6 +5,7 @@ import asyncio
 
 from backend.utilities.general import run_async
 from backend.database.db import create_db
+from backend.database.utilities import update_stores_db
 
 
 def render():
@@ -22,6 +23,11 @@ def render():
             run_async(create_db, key='result')
         if 'result' in st.session_state:
             st.success(st.session_state.result)
+
+    if st.button("Update Database"):
+        with st.spinner("Updating database..."):
+            run_async(update_stores_db)
+        st.success("Database updated successfully.")
 
 
 if __name__ == "__main__":
