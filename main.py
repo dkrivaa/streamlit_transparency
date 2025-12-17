@@ -4,10 +4,10 @@ subprocess.run(["playwright", "install", "chromium"], check=True)
 import streamlit as st
 
 from backend.data.super_class import SupermarketChain
-# from backend.data.binaprojects import BinaProjects
-# from backend.data.carrefour import Carrefour
-# from backend.data.hazihinam import HaziHinam
-# from backend.data.laibcatalog import LaibCatalog
+from backend.data.binaprojects import BinaProjects
+from backend.data.carrefour import Carrefour
+from backend.data.hazihinam import HaziHinam
+from backend.data.laibcatalog import LaibCatalog
 from backend.data.publishedprices import PublishedPrices
 from backend.data.shufersal import Shufersal
 
