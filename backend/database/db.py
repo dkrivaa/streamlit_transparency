@@ -15,7 +15,6 @@ from backend.database.models import Base, Store
 DATABASE_URL = st.secrets["DATABASE_URL"]
 
 
-@st.cache_resource
 def get_engine(database_url: str = DATABASE_URL):
     """ Create and return an asynchronous SQLAlchemy engine. """
     engine = create_async_engine(database_url, echo=True, pool_pre_ping=True, )
