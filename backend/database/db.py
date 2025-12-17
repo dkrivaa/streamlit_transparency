@@ -49,7 +49,7 @@ async def create_db():
             return
         # Use run_sync to call synchronous create_all in async context
         await conn.run_sync(Base.metadata.create_all)
-        print("✅ Database and tables created successfully!")
+    print("✅ successfully!")
 
 
 async def insert_new_stores(stores_data_list: list[dict]):
