@@ -1,10 +1,11 @@
 import httpx
 import asyncio
+import streamlit as st
 
 from backend.data.super_class import SupermarketChain
 
 
-def run_async(coro, *args, **kwargs):
+def run_async(coro, key: str = None, *args, **kwargs):
     """ Run an async coroutine in a synchronous context. """
     try:
         loop = asyncio.get_event_loop()
@@ -15,10 +16,18 @@ def run_async(coro, *args, **kwargs):
     # Always create the coroutine object first
     coro_obj = coro(*args, **kwargs)
 
+    async def wrapper():
+        """ Wrapper to run coroutine and store result in session state if key is provided. """
+        result = await coro_obj
+        if key:
+            st.session_state[key] = result
+        return result
+
     if loop.is_running():
-        return asyncio.create_task(coro_obj)
+        asyncio.create_task(wrapper())
+        return None
     else:
-        return loop.run_until_complete(coro_obj)
+        return loop.run_until_complete(wrapper)
 
 
 async def url_request(
