@@ -1,3 +1,4 @@
+import streamlit as st
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     create_async_engine,
@@ -11,29 +12,29 @@ from backend.database.models import Base, Store
 
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[2]
-DATABASE_URL = f"sqlite+aiosqlite:///{BASE_DIR / 'supermarket.db'}"
+DATABASE_URL = st.secrets["DATABASE_URL"]
 
 
-async def get_engine(database_url: str = DATABASE_URL):
+@st.cache_resource
+def get_engine(database_url: str = DATABASE_URL):
     """ Create and return an asynchronous SQLAlchemy engine. """
-    engine = create_async_engine(database_url, echo=True)
+    engine = create_async_engine(database_url, echo=True, pool_pre_ping=True,)
     return engine
 
 
-async def get_session(engine) -> AsyncSession:
+async def get_session() -> AsyncSession:
     """ Create and return an asynchronous SQLAlchemy session. """
+    engine = get_engine()
     async_session = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
     return async_session()
 
 
 # --- Function to create database ---
 async def create_db():
-    engine = await get_engine()
+    engine = get_engine()
     async with engine.begin() as conn:
         # Use run_sync to call synchronous create_all in async context
         await conn.run_sync(Base.metadata.create_all)
-    await engine.dispose()
     print("✅ Database and tables created successfully!")
 
 
