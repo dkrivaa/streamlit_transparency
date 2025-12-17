@@ -27,7 +27,7 @@ def run_async(coro, key: str = None, *args, **kwargs):
         asyncio.create_task(wrapper())
         return None
     else:
-        return loop.run_until_complete(wrapper)
+        return loop.run_until_complete(wrapper())
 
 
 async def url_request(
