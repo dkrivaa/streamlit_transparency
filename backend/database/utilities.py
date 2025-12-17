@@ -38,13 +38,20 @@ async def update_stores_db():
     # Get list of all classes
     chains = SupermarketChain.registry
 
-    # Make TaskGroup of tasks where each task is getting stores url (and cookies) for chain and updating db
-    async with asyncio.TaskGroup() as tg:
-        tasks = {}
-        for chain in chains:
-            tasks[chain.alias] = tg.create_task(limited(chain))
+    try:
+        # Make TaskGroup of tasks where each task is getting stores url (and cookies) for chain and updating db
+        async with asyncio.TaskGroup() as tg:
+            tasks = {}
+            for chain in chains:
+                tasks[chain.alias] = tg.create_task(limited(chain))
 
-    for name, task in tasks.items():
-        results[name] = task.result()
+    except* Exception as eg:
+        for exc in eg.exceptions:
+            print("❌ Task failed:", repr(exc))
+        raise  # re-raise if you want Streamlit to show error
+
+    else:
+        for name, task in tasks.items():
+            results[name] = task.result()
 
     return results
