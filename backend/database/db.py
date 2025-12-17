@@ -1,4 +1,6 @@
 import streamlit as st
+from sqlalchemy import inspect
+
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     create_async_engine,
@@ -28,9 +30,23 @@ async def get_session() -> AsyncSession:
 
 
 # --- Function to create database ---
+async def tables_exist(conn) -> bool:
+    """ Helper function to check if any tables exist in the database. """
+    def _inspect(sync_conn):
+        inspector = inspect(sync_conn)
+        return bool(inspector.get_table_names())
+
+    return await conn.run_sync(_inspect)
+
+
 async def create_db():
+    """ Create the database and its tables if they do not already exist. """
     engine = get_engine()
     async with engine.begin() as conn:
+        # Check if tables already exist
+        if await tables_exist(conn):
+            print("ℹ️ Tables already exist — skipping create_all()")
+            return
         # Use run_sync to call synchronous create_all in async context
         await conn.run_sync(Base.metadata.create_all)
     print("✅ Database and tables created successfully!")
