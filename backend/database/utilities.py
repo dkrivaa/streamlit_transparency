@@ -1,0 +1,50 @@
+import asyncio
+
+from backend.utilities.url_to_dict import data_dict
+from backend.database.db import insert_new_stores
+from backend.data.super_class import SupermarketChain
+
+
+# UPDATE STORES DATA IN DB ##############
+async def update_chain_stores_db(chain):
+    """ Function with flow of all steps to update a chain stores data in db"""
+    # Get chain stores file from site
+    url_dict = await chain.stores()
+    url = url_dict.get('stores')
+    cookies = url_dict.get('cookies')
+    # Read and make stores url into data dict
+    chain_data = await data_dict(url, cookies)
+    # Prepare the data dict for insertion into db
+    insert_data = await chain.extract_stores_data_for_db(chain_data)
+    # Insert the data into db
+    for k, v in insert_data.items():
+        await insert_new_stores(v)
+
+    return {chain.alias: 'New stores entered into db'}
+
+
+async def update_stores_db():
+    """
+    Function to update all registered chains stores data"""
+    # Set asyncio semaphore limit (concurrent tasks)
+    sem = asyncio.Semaphore(5)
+
+    async def limited(chain):
+        """ A wrapper to run function with semaphore limitation"""
+        async with sem:
+            return await update_chain_stores_db(chain)
+    # Dict to hold results
+    results = {}
+    # Get list of all classes
+    chains = SupermarketChain.registry
+
+    # Make TaskGroup of tasks where each task is getting stores url (and cookies) for chain and updating db
+    async with asyncio.TaskGroup() as tg:
+        tasks = {}
+        for chain in chains:
+            tasks[chain.alias] = tg.create_task(limited(chain))
+
+    for name, task in tasks.items():
+        results[name] = task.result()
+
+    return results

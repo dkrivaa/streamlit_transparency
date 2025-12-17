@@ -7,3 +7,4 @@ xmltodict
 chardet
 crawl4ai
 playwright
+sqlalchemy
