@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
     async_sessionmaker,
 )
-from sqlalchemy.dialects.sqlite import insert as sqlite_insert
+from sqlalchemy.dialects.postgresql import insert
 import asyncio
 
 from backend.database.models import Base, Store
@@ -59,7 +59,7 @@ async def insert_new_stores(stores_data_list: list[dict]):
     """
     engine = get_engine()
     async with await get_session() as session:
-        stmt = sqlite_insert(Store).values(stores_data_list)
+        stmt = insert(Store).values(stores_data_list)
         stmt = stmt.on_conflict_do_nothing(index_elements=["chain_code", "store_code"])
         await session.execute(stmt)
         await session.commit()
