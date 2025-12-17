@@ -45,11 +45,10 @@ async def create_db():
     async with engine.begin() as conn:
         # Check if tables already exist
         if await tables_exist(conn):
-            print("ℹ️ Tables already exist — skipping create_all()")
-            return
+            return "ℹ️ Tables already exist — skipping create_all()"
         # Use run_sync to call synchronous create_all in async context
         await conn.run_sync(Base.metadata.create_all)
-    print("✅ successfully!")
+        return "✅ Database and tables created successfully!"
 
 
 async def insert_new_stores(stores_data_list: list[dict]):
