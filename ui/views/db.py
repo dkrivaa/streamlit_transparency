@@ -19,8 +19,8 @@ def render():
 
     if st.button("Create Database"):
         with st.spinner("Creating database..."):
-            database_message = run_async(create_db)
-        st.success(database_message)
+            run_async(create_db)
+        st.success('All ready')
 
 
 if __name__ == "__main__":
