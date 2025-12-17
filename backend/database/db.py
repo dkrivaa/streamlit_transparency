@@ -10,8 +10,6 @@ import asyncio
 from backend.database.models import Base, Store
 
 
-from pathlib import Path
-
 DATABASE_URL = st.secrets["DATABASE_URL"]
 
 
