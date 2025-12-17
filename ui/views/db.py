@@ -4,7 +4,7 @@ from backend.utilities.general import run_async
 from backend.database.db import create_db
 
 
-def create_database():
+def render():
     """ UI function to create the database and tables """
     st.header("Create Database")
     st.write(
@@ -18,3 +18,7 @@ def create_database():
         with st.spinner("Creating database..."):
             run_async(create_db())
         st.success("✅ Database and tables created successfully!")
+
+
+if __name__ == "__main__":
+    render()
