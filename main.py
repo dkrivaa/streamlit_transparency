@@ -30,7 +30,7 @@ shopping_list_page = st.Page(
 
 db_page = st.Page(
     title='Database',
-    page='ui/views/database.py',
+    page='ui/views/db.py',
 )
 
 
