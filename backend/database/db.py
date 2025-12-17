@@ -44,8 +44,8 @@ async def insert_new_stores(stores_data_list: list[dict]):
     Params:
         stores_data_list - list of dicts of stores data for some chain
     """
-    engine = await get_engine()
-    async with await get_session(engine) as session:
+    engine = get_engine()
+    async with await get_session() as session:
         stmt = sqlite_insert(Store).values(stores_data_list)
         stmt = stmt.on_conflict_do_nothing(index_elements=["chain_code", "store_code"])
         await session.execute(stmt)
