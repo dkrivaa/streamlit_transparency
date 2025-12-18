@@ -29,7 +29,7 @@ def render():
         )
 
         if chain:
-            st.write(chain.code)
+            st.write(chain.chain_code)
             # # Select Store for the selected chain
             # store_objects = run_async(get_stores_for_chain, chain=chain)
             # store_options = {store.store_code: store.store_name for store in store_objects}

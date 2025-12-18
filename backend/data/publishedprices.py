@@ -267,7 +267,7 @@ class PublishedPrices(SupermarketChain):
 class RamiLevi(PublishedPrices):
     abstract = False
     name = 'רשת חנויות רמי לוי שיווק השקמה 2006 בע"מ'
-    code = '7290058140886'
+    chain_code = '7290058140886'
     alias = 'ramilevi'
     url = 'https://url.publishedprices.co.il/login'
     username = 'RamiLevi'
