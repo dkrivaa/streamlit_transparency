@@ -37,12 +37,10 @@ class LaibCatalog(SupermarketChain):
     async def all_urls_for_chain(cls, client: httpx.AsyncClient | None = None) -> list | dict:
         """ This function gets store list for laibcatalog supermarket chains. """
         base = await cls.get_url()
-        print('base url:', base)
         # Get store list
         try:
             # Get response from the URL
             response = await url_request(base, client=client)
-            print('response type:', type(response['response']))
             # Parse the response to extract store links
             all_links = await cls.parse_response(response['response'])
             all_for_chain = await cls.chain_links(all_links)
