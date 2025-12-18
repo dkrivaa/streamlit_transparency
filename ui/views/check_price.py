@@ -39,7 +39,7 @@ def render():
                 placeholder="Select Supermarket Store",
             )
 
-            st.write(store)
+            st.write(type(store))
 
 
 
