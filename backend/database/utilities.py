@@ -37,6 +37,7 @@ async def update_stores_db():
     results = {}
     # Get list of all classes
     chains = SupermarketChain.registry
+    print('chains:', chains)
 
     try:
         # Make TaskGroup of tasks where each task is getting stores url (and cookies) for chain and updating db
