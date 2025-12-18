@@ -18,9 +18,14 @@ home_page = st.Page(
     default=True
 )
 
-check_price_page = st.Page(
+check_price_page1 = st.Page(
     title='Check Price',
-    page='ui/views/check_price.py',
+    page='ui/views/check_price_1.py',
+)
+
+check_price_page2 = st.Page(
+    title='Check Price',
+    page='ui/views/check_price_2.py',
 )
 
 shopping_list_page = st.Page(
@@ -34,7 +39,7 @@ db_page = st.Page(
 )
 
 
-pages = [home_page, check_price_page, shopping_list_page, db_page]
+pages = [home_page, check_price_page1, shopping_list_page, db_page]
 pg = st.navigation(pages=pages, position='top')
 
 pg.run()

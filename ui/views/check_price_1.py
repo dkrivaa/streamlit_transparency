@@ -12,7 +12,7 @@ def sort_classes_by_alias(classes: list[type]) -> list[type]:
 
 
 def render():
-    """ The main function to render the check price page """
+    """ The main function to render the check price page 1 """
     st.title("Check Product Price")
     st.divider()
 
@@ -46,11 +46,8 @@ def render():
                 st.session_state.alias = chain.alias
                 st.session_state.store = store
 
-                # my_chain = st.session_state.get('chain', None)
-                # my_store = st.session_state.get('store', None)
-                # urls = run_async(my_chain.prices, store_code=my_store) if my_chain and my_store else None
-                #
-                # st.write(urls)
+                if st.button('Continue'):
+                    st.switch_page('ui/views/check_price_2.py')
 
 
 if __name__ == "__main__":
