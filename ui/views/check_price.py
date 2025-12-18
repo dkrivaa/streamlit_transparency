@@ -29,7 +29,7 @@ def render():
 
     if chain:
         st.write(f"You selected: {chain.name} ({chain.chain_code})")
-        st.write(run_async(get_stores_for_chain, chain))
+        st.write(run_async(get_stores_for_chain, chain=chain))
 
 
 
