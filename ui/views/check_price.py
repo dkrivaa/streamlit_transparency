@@ -30,7 +30,7 @@ def render():
     if chain:
         st.write(f"You selected: {chain.name} ({chain.chain_code})")
         store_objects = run_async(get_stores_for_chain, chain=chain)
-        store_options = {f"{store.name} ({store.code})" for store in store_objects}
+        store_options = {f"{store.store_name} ({store.store_code})" for store in store_objects}
         st.write(store_options)
 
 
