@@ -28,11 +28,8 @@ def render():
         )
 
     if chain:
-        st.write(f"You selected: {chain.name} ({chain.alias})")
-    # chain = get_chain_class_by_alias(chain_alias)
-    # st.write(f"Loaded chain: {chain.name} ({chain.alias})")
-    # stores = run_async(chain.prices, store_code=1)
-    # st.write(stores)
+        st.write(f"You selected: {chain.name} ({chain.chain_code})")
+
 
 
 if __name__ == "__main__":
