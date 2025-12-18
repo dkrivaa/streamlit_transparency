@@ -37,13 +37,13 @@ async def update_stores_db():
     results = {}
     # Get list of all classes
     chains = SupermarketChain.registry
-    print('chains:', chains)
 
     try:
         # Make TaskGroup of tasks where each task is getting stores url (and cookies) for chain and updating db
         async with asyncio.TaskGroup() as tg:
             tasks = {}
             for chain in chains:
+                print('chain:', chain)
                 tasks[chain.alias] = tg.create_task(limited(chain))
 
     except* Exception as eg:
