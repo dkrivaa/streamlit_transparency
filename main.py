@@ -39,7 +39,7 @@ db_page = st.Page(
 )
 
 
-pages = [home_page, check_price_page1, shopping_list_page, db_page]
+pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db_page]
 pg = st.navigation(pages=pages, position='top')
 
 pg.run()
