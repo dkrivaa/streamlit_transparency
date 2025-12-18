@@ -12,7 +12,9 @@ def render():
     my_store = st.session_state.get('store', None)
     urls = run_async(my_chain.prices, store_code=my_store) if my_chain and my_store else None
 
-    st.write(urls)
+    url = urls.get('pricefull', None) if urls else None
+
+    st.write(url)
 
 
 if __name__ == "__main__":
