@@ -42,11 +42,12 @@ def render():
             )
 
             if store:
-                st.session_state.chain = chain.chain_code
+                st.session_state.chain = chain
                 st.session_state.alias = chain.alias
                 st.session_state.store = store
 
     st.write(st.session_state)
+
 
 if __name__ == "__main__":
     render()
