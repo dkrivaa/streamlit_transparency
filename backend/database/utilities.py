@@ -1,7 +1,9 @@
 import asyncio
+from sqlalchemy import select
 
 from backend.utilities.url_to_dict import data_dict
-from backend.database.db import insert_new_stores
+from backend.database.models import Store
+from backend.database.db import get_session, insert_new_stores
 from backend.data.super_class import SupermarketChain
 
 
@@ -55,3 +57,14 @@ async def update_stores_db():
             results[name] = task.result()
 
     return results
+
+
+async def get_stores_for_chain(chain: SupermarketChain):
+    """ Function to get stores data for a specific chain """
+    Session = await get_session()
+
+    async with Session as session:
+        result = await session.execute(
+            select(Store).where(Store.chain_code == chain.chain_code)
+        )
+

@@ -3,7 +3,7 @@ import asyncio
 
 from backend.utilities.general import run_async
 from backend.data.super_class import SupermarketChain
-from backend.utilities.general import get_chain_class_by_alias
+from backend.database.utilities import get_stores_for_chain
 
 
 def sort_classes_by_alias(classes: list[type]) -> list[type]:
@@ -29,6 +29,7 @@ def render():
 
     if chain:
         st.write(f"You selected: {chain.name} ({chain.chain_code})")
+        st.write(run_async(get_stores_for_chain, chain))
 
 
 
