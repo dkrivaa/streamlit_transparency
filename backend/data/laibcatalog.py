@@ -41,8 +41,7 @@ class LaibCatalog(SupermarketChain):
         # Get store list
         try:
             # Get response from the URL
-            response = await url_request(base, )
-            print('response:', response)
+            response = await url_request(base, client=client)
             # Parse the response to extract store links
             all_links = await cls.parse_response(response['response'])
             all_for_chain = await cls.chain_links(all_links)
