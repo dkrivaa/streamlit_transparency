@@ -15,8 +15,9 @@ def render():
     url = urls.get('pricefull', None) if urls else None
     cookies = urls.get('cookies', None) if urls else None
 
-    st.write(url)
-    st.write(cookies)
+    price_data = run_async(my_chain.get_price_data, url=url, cookies=cookies) if url else None
+
+    st.write(price_data)
 
 
 if __name__ == "__main__":
