@@ -34,7 +34,7 @@ def render():
                 label="Select Store",
                 label_visibility='hidden',
                 options=list(store_options.keys()),
-                format_func=lambda x: x - store_options[x],
+                format_func=lambda x: f'{x} - {store_options[x]}',
                 index=None,
                 placeholder="Select Supermarket Store",
             )
