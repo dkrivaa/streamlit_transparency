@@ -7,8 +7,6 @@ from backend.utilities.general import run_async
 from backend.database.db import create_db
 from backend.database.utilities import update_stores_db
 
-from backend.data.super_class import SupermarketChain
-
 
 def render():
     """ UI function to create the database and tables """
