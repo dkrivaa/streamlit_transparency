@@ -18,7 +18,7 @@ def render():
 
     price_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
     price_data = run_async(my_chain.get_price_data, price_data=price_dict) if price_dict else None
-    item_details = run_async(my_chain.get_shopping_prices, price_data=price_data, shopping_list=[7290000072753]) if price_data else None
+    item_details = run_async(my_chain.get_shopping_prices, price_data=price_data, shoppinglist=[7290000072753]) if price_data else None
 
 
     st.write(item_details)
