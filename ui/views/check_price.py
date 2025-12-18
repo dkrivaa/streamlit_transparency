@@ -42,10 +42,8 @@ def render():
             )
 
             if store:
-                if 'chain' not in st.session_state or st.session_state.chain:
-                    st.session_state.chain = chain.chain_code
-                if 'store' not in st.session_state or st.session_state.store:
-                    st.session_state.store = store
+                st.session_state.chain = chain.chain_code
+                st.session_state.store = store
 
     st.write(st.session_state)
 
