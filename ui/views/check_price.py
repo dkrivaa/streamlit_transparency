@@ -27,10 +27,19 @@ def render():
             placeholder="Select Supermarket Chain",
         )
 
-    if chain:
-        store_objects = run_async(get_stores_for_chain, chain=chain)
-        store_options = {store.store_code: store.store_name for store in store_objects}
-        st.write(store_options)
+        if chain:
+            store_objects = run_async(get_stores_for_chain, chain=chain)
+            store_options = {store.store_code: store.store_name for store in store_objects}
+            store = st.selectbox(
+                label="Select Store",
+                label_visibility='hidden',
+                options=list(store_options.keys()),
+                format_func=lambda x: x - store_options[x],
+                index=None,
+                placeholder="Select Supermarket Store",
+            )
+
+            st.write(store)
 
 
 
