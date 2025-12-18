@@ -145,6 +145,25 @@ class CarrefourParent(SupermarketChain):
         return results
 
     @classmethod
+    async def extract_stores_data_for_db(cls, stores_data_dict: dict) -> dict[str, list[dict]]:
+        """
+        This function extracts store data from the stores_data_dict extracted from latest stores url
+        and prepares it for database insertion.
+        """
+        root = stores_data_dict.get("Root", {})
+        sub = root.get("SubChains", {}).get("SubChain", {})
+        chain_info = {
+            "chain_code": root.get("ChainID"),
+            "chain_name": root.get("ChainName"),
+        }
+
+        stores = []
+        for s in sub.get("Stores", {}).get("Store", []):
+            stores.append(await cls.as_store_dict(s, **chain_info, subchain_code=sub.get("SubChainId")
+                                                  , subchain_name=sub.get("SubChainName")))
+        return {'stores_data_list': stores}
+
+    @classmethod
     async def search_for_item(cls, price_data: dict, search_term: str):
         """ Return dicts that has search term """
         return [d for d in price_data if search_term in d['ItemName']]
