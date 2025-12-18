@@ -13,7 +13,6 @@ from backend.data.super_class import SupermarketChain
 def render():
     """ UI function to create the database and tables """
     st.header("Create Database")
-    st.write([cls.alias for cls in SupermarketChain.registry])
     st.write(
         """
         Click the button below to create the database and its tables.
