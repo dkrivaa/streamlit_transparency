@@ -43,7 +43,6 @@ async def update_stores_db():
         async with asyncio.TaskGroup() as tg:
             tasks = {}
             for chain in chains:
-                print('chain:', chain)
                 tasks[chain.alias] = tg.create_task(limited(chain))
 
     except* Exception as eg:
