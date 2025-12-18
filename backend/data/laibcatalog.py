@@ -66,6 +66,7 @@ class LaibCatalog(SupermarketChain):
     async def stores(cls, client: httpx.AsyncClient | None = None) -> dict:
         """ This function gets store list for selected laibcatalog supermarket chain. """
         all_urls = await cls.all_urls_for_chain(client=client)
+        print(all_urls)
         # If no errors:
         if 'Error' not in all_urls.keys():
             store_urls = [url for url in all_urls['urls'] if 'store' in url.lower()]
