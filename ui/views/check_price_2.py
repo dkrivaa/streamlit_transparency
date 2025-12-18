@@ -17,8 +17,10 @@ def render():
     cookies = urls.get('cookies', None) if urls else None
 
     price_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
+    price_data = run_async(my_chain.get_price_data, price_data=price_dict) if price_dict else None
 
-    st.write(price_dict)
+
+    st.write(price_data)
 
 
 if __name__ == "__main__":
