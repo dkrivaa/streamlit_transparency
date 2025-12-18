@@ -46,7 +46,8 @@ def render():
                 st.session_state.alias = chain.alias
                 st.session_state.store = store
 
-    st.write(type(st.session_state.chain))
+    my_chain = st.session_state.get('chain', None)
+    st.write(my_chain.alias)
 
 
 if __name__ == "__main__":
