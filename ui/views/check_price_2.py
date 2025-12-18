@@ -13,8 +13,10 @@ def render():
     urls = run_async(my_chain.prices, store_code=my_store) if my_chain and my_store else None
 
     url = urls.get('pricefull', None) if urls else None
+    cookies = urls.get('cookies', None) if urls else None
 
     st.write(url)
+    st.write(cookies)
 
 
 if __name__ == "__main__":
