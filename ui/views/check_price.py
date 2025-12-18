@@ -29,28 +29,29 @@ def render():
         )
 
         if chain:
-            # Select Store for the selected chain
-            store_objects = run_async(get_stores_for_chain, chain=chain)
-            store_options = {store.store_code: store.store_name for store in store_objects}
-            store = st.selectbox(
-                label="Select Store",
-                label_visibility='hidden',
-                options=sorted(list(store_options.keys()), key=int),
-                format_func=lambda x: f'{x} - {store_options[x]}',
-                index=None,
-                placeholder="Select Supermarket Store",
-            )
-
-            if store:
-                st.session_state.chain = chain
-                st.session_state.alias = chain.alias
-                st.session_state.store = store
-
-                my_chain = st.session_state.get('chain', None)
-                my_store = st.session_state.get('store', None)
-                urls = run_async(my_chain.prices, store_code=my_store) if my_chain and my_store else None
-
-                st.write(urls)
+            st.write(chain.chain_code)
+            # # Select Store for the selected chain
+            # store_objects = run_async(get_stores_for_chain, chain=chain)
+            # store_options = {store.store_code: store.store_name for store in store_objects}
+            # store = st.selectbox(
+            #     label="Select Store",
+            #     label_visibility='hidden',
+            #     options=sorted(list(store_options.keys()), key=int),
+            #     format_func=lambda x: f'{x} - {store_options[x]}',
+            #     index=None,
+            #     placeholder="Select Supermarket Store",
+            # )
+            #
+            # if store:
+            #     st.session_state.chain = chain
+            #     st.session_state.alias = chain.alias
+            #     st.session_state.store = store
+            #
+            #     my_chain = st.session_state.get('chain', None)
+            #     my_store = st.session_state.get('store', None)
+            #     urls = run_async(my_chain.prices, store_code=my_store) if my_chain and my_store else None
+            #
+            #     st.write(urls)
 
 
 if __name__ == "__main__":
