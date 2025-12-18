@@ -25,6 +25,7 @@ class LaibCatalog(SupermarketChain):
             if a and not a["href"].startswith("javascript:"):
                 href = a["href"].replace("\\", "/")  # normalize slashes
                 hrefs.append(urljoin(base, href))
+        print(hrefs)
         return hrefs
 
     @classmethod
@@ -41,8 +42,7 @@ class LaibCatalog(SupermarketChain):
         try:
             # Get response from the URL
             response = await url_request(base, client=client)
-            if response['response']:
-                print("laibcatalog response received")
+            print(response.keys())
             # Parse the response to extract store links
             all_links = await cls.parse_response(response['response'])
             all_for_chain = await cls.chain_links(all_links)
