@@ -25,7 +25,6 @@ class LaibCatalog(SupermarketChain):
             if a and not a["href"].startswith("javascript:"):
                 href = a["href"].replace("\\", "/")  # normalize slashes
                 hrefs.append(urljoin(base, href))
-        print(hrefs)
         return hrefs
 
     @classmethod
@@ -38,21 +37,10 @@ class LaibCatalog(SupermarketChain):
     async def all_urls_for_chain(cls, client: httpx.AsyncClient | None = None) -> list | dict:
         """ This function gets store list for laibcatalog supermarket chains. """
         base = await cls.get_url()
-
-        headers = {
-                    "User-Agent": (
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                        "AppleWebKit/537.36 (KHTML, like Gecko) "
-                        "Chrome/120.0.0.0 Safari/537.36"
-                    ),
-                    "Accept": "*/*",
-                    "Accept-Language": "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7",
-                }
         # Get store list
         try:
             # Get response from the URL
             response = await url_request(base, client=client, headers=headers)
-            print(response)
             # Parse the response to extract store links
             all_links = await cls.parse_response(response['response'])
             all_for_chain = await cls.chain_links(all_links)
