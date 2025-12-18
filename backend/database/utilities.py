@@ -67,4 +67,6 @@ async def get_stores_for_chain(chain: SupermarketChain):
         result = await session.execute(
             select(Store).where(Store.chain_code == chain.chain_code)
         )
+        stores = result.scalars().all()
+    return stores
 
