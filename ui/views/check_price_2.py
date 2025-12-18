@@ -1,6 +1,7 @@
 import streamlit as st
 
 from backend.utilities.general import run_async
+from backend.utilities.url_to_dict import data_dict
 
 
 def render():
@@ -15,9 +16,9 @@ def render():
     url = urls.get('pricefull', None) if urls else None
     cookies = urls.get('cookies', None) if urls else None
 
-    price_data = run_async(my_chain.get_price_data, url=url, cookies=cookies) if url else None
+    price_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
 
-    st.write(price_data)
+    st.write(price_dict)
 
 
 if __name__ == "__main__":
