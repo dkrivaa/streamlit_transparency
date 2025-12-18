@@ -17,7 +17,11 @@ DATABASE_URL = st.secrets["DATABASE_URL"]
 
 def get_engine(database_url: str = DATABASE_URL):
     """ Create and return an asynchronous SQLAlchemy engine. """
-    engine = create_async_engine(database_url, echo=True, pool_pre_ping=True, )
+    engine = create_async_engine(database_url, echo=True, pool_pre_ping=True,
+                                 connect_args={
+                                     "statement_cache_size": 0,  # 🔑 REQUIRED for Supabase
+                                 },
+                                 )
     return engine
 
 
