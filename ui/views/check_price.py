@@ -33,7 +33,7 @@ def render():
             store = st.selectbox(
                 label="Select Store",
                 label_visibility='hidden',
-                options=sorted(list(store_options.keys())),
+                options=sorted(list(int(store_options.keys()))),
                 format_func=lambda x: f'{x} - {store_options[x]}',
                 index=None,
                 placeholder="Select Supermarket Store",
