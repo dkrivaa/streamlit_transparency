@@ -51,7 +51,7 @@ def render():
 
 
 
-
+    st.write(price_data)
 
     item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
                              shoppinglist=[7290000072753]) if price_data else None
