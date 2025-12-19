@@ -36,17 +36,18 @@ def render():
     st.write('Your Data is Ready!')
 
     if price_data:
-        with st.container(border=True):
-            st.subheader("Product Details")
-            # Get item details for a sample barcode
-            item = st.selectbox(
-                label='Select Barcode',
-                label_visibility='hidden',
-                options = sorted(list(price_data.keys()), key=int),
-                format_func=lambda x: f'{x} - {price_data[x].get("name", "Unknown Product")}',
-                index=None,
-                placeholder="Select Product Barcode",
-            )
+        st.write(price_data.keys()[:10])  # Display first 10 barcodes as a sample
+        # with st.container(border=True):
+        #     st.subheader("Product Details")
+        #     # Get item details for a sample barcode
+        #     item = st.selectbox(
+        #         label='Select Barcode',
+        #         label_visibility='hidden',
+        #         options = sorted(list(price_data.keys()), key=int),
+        #         format_func=lambda x: f'{x} - {price_data[x].get("name", "Unknown Product")}',
+        #         index=None,
+        #         placeholder="Select Product Barcode",
+        #     )
 
 
 
