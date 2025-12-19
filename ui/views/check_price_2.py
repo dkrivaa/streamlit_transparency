@@ -49,6 +49,8 @@ def render():
                 placeholder="Select Product Barcode",
             )
 
+            st.write(item)
+
 
 
 
