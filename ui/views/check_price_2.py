@@ -26,17 +26,36 @@ def render():
     """" The main function to render the check price page 2 """
     st.title("Check Product Price")
     st.divider()
-
+    # Retrieve chain and store from session state
     my_chain = st.session_state.get('chain', None)
     alias = my_chain.alias if my_chain else None
     my_store = st.session_state.get('store', None)
-
+    # Fetch fresh data for the selected chain and store
     price_data = fresh_data(alias=alias, store_code=my_store) if alias and my_store else None
 
-    item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
-                             shoppinglist=[7290000072753]) if price_data else None
+    st.write('Your Data is Ready!')
 
-    st.write(item_details)
+    if price_data:
+        with st.container(border=True):
+            st.subheader("Product Details")
+            # Get item details for a sample barcode
+            item = st.selectbox(
+                label='Select Barcode',
+                label_visibility='hidden',
+                options = sorted(list(price_data.keys()), key=int),
+                format_func=lambda x: f'{x} - {price_data[x].get("name", "Unknown Product")}',
+                index=None,
+                placeholder="Select Product Barcode",
+            )
+
+
+
+
+
+        item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
+                                 shoppinglist=[7290000072753]) if price_data else None
+
+        st.write(item_details)
 
 
 if __name__ == "__main__":
