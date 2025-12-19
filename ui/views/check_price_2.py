@@ -35,23 +35,22 @@ def render():
 
     st.write('Your Data is Ready!')
 
-    # if price_data:
-    #     st.write(price_data.keys()[:10])  # Display first 10 barcodes as a sample
-        # with st.container(border=True):
-        #     st.subheader("Product Details")
-        #     # Get item details for a sample barcode
-        #     item = st.selectbox(
-        #         label='Select Barcode',
-        #         label_visibility='hidden',
-        #         options = sorted(list(price_data.keys()), key=int),
-        #         format_func=lambda x: f'{x} - {price_data[x].get("name", "Unknown Product")}',
-        #         index=None,
-        #         placeholder="Select Product Barcode",
-        #     )
+    if price_data:
+
+        with st.container(border=True):
+            st.subheader("Product Details")
+            # Get item details for a sample barcode
+            item = st.selectbox(
+                label='Select Barcode',
+                label_visibility='hidden',
+                options = sorted([d['ItemCode'] for d in price_data], key=int),
+                # format_func=lambda x: f'{x} - {price_data[x].get("name", "Unknown Product")}',
+                index=None,
+                placeholder="Select Product Barcode",
+            )
 
 
 
-    st.write(price_data)
 
     item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
                              shoppinglist=[7290000072753]) if price_data else None
