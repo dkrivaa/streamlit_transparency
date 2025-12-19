@@ -49,15 +49,14 @@ def render():
                 placeholder="Select Product Barcode",
             )
 
-            st.write(item)
 
 
 
 
-    item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
-                             shoppinglist=[7290000072753]) if price_data else None
+            item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
+                                     shoppinglist=[item]) if price_data else None
 
-    st.write(item_details)
+            st.write(item_details)
 
 
 if __name__ == "__main__":
