@@ -35,8 +35,8 @@ def render():
 
     st.write('Your Data is Ready!')
 
-    if price_data:
-        st.write(price_data.keys()[:10])  # Display first 10 barcodes as a sample
+    # if price_data:
+    #     st.write(price_data.keys()[:10])  # Display first 10 barcodes as a sample
         # with st.container(border=True):
         #     st.subheader("Product Details")
         #     # Get item details for a sample barcode
@@ -53,10 +53,10 @@ def render():
 
 
 
-        item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
-                                 shoppinglist=[7290000072753]) if price_data else None
+    item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
+                             shoppinglist=[7290000072753]) if price_data else None
 
-        st.write(item_details)
+    st.write(item_details)
 
 
 if __name__ == "__main__":
