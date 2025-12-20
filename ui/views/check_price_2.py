@@ -22,6 +22,24 @@ def fresh_price_data(alias: str, store_code: str | int) -> dict | None:
     return price_data
 
 
+@st.cache_data(ttl=1200)
+def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
+    """ Fetch fresh data for the given chain and store code """
+    # Get the supermarket chain class from its alias
+    chain = next((c for c in SupermarketChain.registry if c.alias == alias), None)
+    # Get the latest price URLs for the given chain and store code
+    urls = run_async(chain.prices, store_code=store_code) if chain and store_code else None
+    # Use promofull URL and cookies if available
+    url = urls.get('promofull') or urls.get('PromoFull') if urls else None
+    cookies = urls.get('cookies', None) if urls else None
+    # Make data dict from data in pricefull URL
+    promo_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
+    st.write(promo_dict)
+    # Clean data dict to only include dicts of items
+    # promo_data = run_async(chain.get_price_data, price_data=promo_dict) if promo_dict else None
+    # return promo_data
+
+
 def render():
     """" The main function to render the check price page 2 """
     st.title("Check Product Price")
@@ -57,7 +75,9 @@ def render():
 
             item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
                                      shoppinglist=[item]) if price_data else None
+            item_promos = fresh_promo_data(alias=alias, store_code=my_store) if alias and my_store else None
             st.write(item_details)
+            st.write(item_promos)
 
     else:
         st.warning("No data available for the selected chain and store. Please go back and select again.")
