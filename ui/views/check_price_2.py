@@ -18,7 +18,7 @@ def fresh_price_data(alias: str, store_code: str | int) -> dict | None:
     # Make data dict from data in pricefull URL
     price_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
     # Clean data dict to only include dicts of items
-    price_data = run_async(chain.get_price_data, price_data=price_dict) if price_dict else None
+    price_data = chain.get_price_data(price_data=price_dict) if price_dict else None
     return price_data
 
 
@@ -35,7 +35,7 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
     # Make data dict from data in pricefull URL
     promo_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
     # Clean data dict to only include dicts of items
-    promo_data = run_async(chain.get_promo_data, promo_data=promo_dict) if promo_dict else None
+    promo_data = chain.get_promo_data(promo_data=promo_dict) if promo_dict else None
     return promo_data
 
 
