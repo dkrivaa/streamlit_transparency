@@ -74,8 +74,8 @@ def render():
             )
 
             # Get price details for item from price data
-            item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
-                                     shoppinglist=[item]) if price_data else None
+            item_details = my_chain.get_shopping_prices(price_data=price_data,
+                                                        shoppinglist=[item]) if price_data else None
             # Get relevant promo blacklist for the chain
             blacklist = my_chain.promo_blacklist() if my_chain else set()
             # Get promo details for item from promo data
