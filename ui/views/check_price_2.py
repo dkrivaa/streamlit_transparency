@@ -6,7 +6,7 @@ from backend.data.super_class import SupermarketChain
 
 
 @st.cache_data(ttl=1200)
-def fresh_data(alias: str, store_code: str | int) -> dict | None:
+def fresh_price_data(alias: str, store_code: str | int) -> dict | None:
     """ Fetch fresh data for the given chain and store code """
     # Get the supermarket chain class from its alias
     chain = next((c for c in SupermarketChain.registry if c.alias == alias), None)
@@ -31,7 +31,7 @@ def render():
     alias = my_chain.alias if my_chain else None
     my_store = st.session_state.get('store', None)
     # Fetch fresh data for the selected chain and store
-    price_data = fresh_data(alias=alias, store_code=my_store) if alias and my_store else None
+    price_data = fresh_price_data(alias=alias, store_code=my_store) if alias and my_store else None
 
     if price_data:
         st.write('Your Data is Ready!')
