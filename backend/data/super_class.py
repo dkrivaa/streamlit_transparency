@@ -68,7 +68,7 @@ class SupermarketChain:
         }
 
     @classmethod
-    async def get_price_data(cls, price_data: dict):
+    def get_price_data(cls, price_data: dict):
         """ Extract the list of prices from task.result() """
         items = (price_data.get("Root") or price_data.get("root"))["Items"]["Item"]
         for item in items:
@@ -77,7 +77,7 @@ class SupermarketChain:
         return items
 
     @classmethod
-    async def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
+    def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
         """ Getting prices for barcodes in shopping list """
         results = {}
         for barcode in shoppinglist:
