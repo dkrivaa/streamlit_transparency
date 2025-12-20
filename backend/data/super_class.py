@@ -86,7 +86,7 @@ class SupermarketChain:
         return results
 
     @classmethod
-    async def get_promo_data(cls, promo_data: dict):
+    def get_promo_data(cls, promo_data: dict):
         """ Extract the list of prices from task.result() """
         items = (promo_data.get("Root") or promo_data.get("root"))["Promotions"]["Promotion"]
         for item in items:
@@ -95,7 +95,7 @@ class SupermarketChain:
         return items
 
     @classmethod
-    async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int],
+    def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int],
                                   blacklist: set) -> dict:
         """ Getting promos for barcodes in shopping list """
         # Dict to hold results

@@ -79,8 +79,8 @@ def render():
             # Get relevant promo blacklist for the chain
             blacklist = my_chain.promo_blacklist() if my_chain else set()
             # Get promo details for item from promo data
-            item_promos = run_async(my_chain.get_shopping_promos, promo_data=promo_data,
-                                    shoppinglist=[item], blacklist=blacklist) if promo_data else None
+            item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
+                                                       blacklist=blacklist) if promo_data else None
             st.write(item_details)
             st.write(item_promos)
 
