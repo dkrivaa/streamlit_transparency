@@ -173,7 +173,11 @@ class HaziHinam(SupermarketChain):
     @classmethod
     async def get_price_data(cls, price_data: dict):
         """ Extract the list of prices from task.result() """
-        return (price_data.get("Root") or price_data.get("root"))["Items"]["Item"]
+        items = (price_data.get("Root") or price_data.get("root"))["Items"]["Item"]
+        for item in items:
+            item["ChainAlias"] = cls.alias
+
+        return items
 
     @classmethod
     async def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
