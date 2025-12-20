@@ -117,10 +117,13 @@ class SupermarketChain:
                     matched_promos.append(promo)
 
             # Blacklist of PromotionIds to exclude (General promos)
-            matched_promos = [
-                promo for promo in matched_promos
-                if str(promo.get("PromotionId", "")).strip() not in blacklist
-            ]
+            try:
+                matched_promos = [
+                    promo for promo in matched_promos
+                    if str(promo.get("PromotionId", "")).strip() not in blacklist
+                ]
+            except Exception:
+                pass
 
             # Make dict with barkide as key and list of matched promos as value
             results[barcode] = matched_promos
