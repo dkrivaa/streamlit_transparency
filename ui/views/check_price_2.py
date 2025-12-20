@@ -75,10 +75,10 @@ def render():
 
             item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
                                      shoppinglist=[item]) if price_data else None
-            item_promos = run_async(my_chain.get_shopping_promos, promo_data=promo_data,
-                                    shoppinglist=[item]) if promo_data else None
+            # item_promos = run_async(my_chain.get_shopping_promos, promo_data=promo_data,
+            #                         shoppinglist=[item]) if promo_data else None
             st.write(item_details)
-            st.write(item_promos)
+            st.write(promo_data)
 
     else:
         st.warning("No data available for the selected chain and store. Please go back and select again.")
