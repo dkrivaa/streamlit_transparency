@@ -131,24 +131,6 @@ class CarrefourParent(SupermarketChain):
             return all_urls
 
     @classmethod
-    async def get_price_data(cls, price_data: dict):
-        """ Extract the list of prices from task.result() """
-        items = (price_data.get("Root") or price_data.get("root"))["Items"]["Item"]
-        for item in items:
-            item["ChainAlias"] = cls.alias
-
-        return items
-
-    @classmethod
-    async def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
-        """ Getting prices for barcodes in shopping list """
-        results = {}
-        for barcode in shoppinglist:
-            results[str(barcode)] = next((d for d in price_data if d['ItemCode'] == str(barcode)), None)
-
-        return results
-
-    @classmethod
     async def extract_stores_data_for_db(cls, stores_data_dict: dict) -> dict[str, list[dict]]:
         """
         This function extracts store data from the stores_data_dict extracted from latest stores url
@@ -171,6 +153,11 @@ class CarrefourParent(SupermarketChain):
     async def search_for_item(cls, price_data: dict, search_term: str):
         """ Return dicts that has search term """
         return [d for d in price_data if search_term in d['ItemName']]
+
+    @classmethod
+    async def promo_blacklist(cls) -> set[str]:
+        """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
+        return set()  # When blacklist the format should be: {"4305214"}
 
 
 class Carrefour(CarrefourParent):
