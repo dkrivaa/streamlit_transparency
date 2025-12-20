@@ -132,69 +132,14 @@ class Shufersal(SupermarketChain):
         return {"stores_data_list": stores}
 
     @classmethod
-    async def get_price_data(cls, price_data: dict):
-        """ Extract the list of prices from task.result() """
-        items = (price_data.get("Root") or price_data.get("root"))["Items"]["Item"]
-        for item in items:
-            item["ChainAlias"] = cls.alias
-
-        return items
-
-    @classmethod
-    async def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
-        """ Getting prices for barcodes in shopping list """
-        results = {}
-        for barcode in shoppinglist:
-            results[str(barcode)] = next((d for d in price_data if d['ItemCode'] == str(barcode)), None)
-
-        return results
-
-    @classmethod
-    async def get_promo_data(cls, promo_data: dict):
-        """ Extract the list of prices from task.result() """
-        items = (promo_data.get("Root") or promo_data.get("root"))["Promotions"]["Promotion"]
-        for item in items:
-            item["ChainAlias"] = cls.alias
-
-        return items
-
-    @classmethod
-    async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int]) -> dict:
-        """ Getting promos for barcodes in shopping list """
-        # Dict to hold results
-        results = {}
-
-        for barcode in shoppinglist:
-            barcode = str(barcode)
-            # A list to hold matched promos for the barcode
-            matched_promos = []
-
-            for promo in promo_data:
-                items = promo.get("PromotionItems", {}).get("Item", [])
-
-                # Normalize: dict → list
-                if isinstance(items, dict):
-                    items = [items]
-
-                if any(item.get("ItemCode") == barcode for item in items):
-                    matched_promos.append(promo)
-
-            # Blacklist of PromotionIds to exclude (General promos)
-            blacklist_items = {"4305214"}
-            matched_promos = [
-                promo for promo in matched_promos
-                if str(promo.get("PromotionId", "")).strip() not in blacklist_items
-            ]
-
-            # Make dict with barkide as key and list of matched promos as value
-            results[barcode] = matched_promos
-
-        return results
-
-    @classmethod
     async def search_for_item(cls, price_data: dict, search_term: str):
         """ Return dicts that has search term """
         return [d for d in price_data if search_term in d['ItemName']]
+
+    @classmethod
+    async def promo_blacklist(cls) -> set[str]:
+        """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
+        return {"4305214"}
 
 
 

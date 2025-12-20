@@ -95,7 +95,8 @@ class SupermarketChain:
         return items
 
     @classmethod
-    async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int]) -> dict:
+    async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int],
+                                  blacklist: set) -> dict:
         """ Getting promos for barcodes in shopping list """
         # Dict to hold results
         results = {}
@@ -116,10 +117,9 @@ class SupermarketChain:
                     matched_promos.append(promo)
 
             # Blacklist of PromotionIds to exclude (General promos)
-            blacklist_items = {"4305214"}
             matched_promos = [
                 promo for promo in matched_promos
-                if str(promo.get("PromotionId", "")).strip() not in blacklist_items
+                if str(promo.get("PromotionId", "")).strip() not in blacklist
             ]
 
             # Make dict with barkide as key and list of matched promos as value
