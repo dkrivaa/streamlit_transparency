@@ -162,11 +162,23 @@ class Shufersal(SupermarketChain):
     async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int]) -> dict:
         """ Getting promos for barcodes in shopping list """
         results = {}
+
         for barcode in shoppinglist:
-            results[str(barcode)] = [
-                d for d in promo_data
-                if any(item['ItemCode'] == str(barcode) for item in d['PromotionItems']['Item'])
-            ]
+            barcode = str(barcode)
+
+            matched_promos = []
+
+            for promo in promo_data:
+                items = promo.get("PromotionItems", {}).get("Item", [])
+
+                # Normalize: dict → list
+                if isinstance(items, dict):
+                    items = [items]
+
+                if any(item.get("ItemCode") == barcode for item in items):
+                    matched_promos.append(promo)
+
+            results[barcode] = matched_promos
 
         return results
 
