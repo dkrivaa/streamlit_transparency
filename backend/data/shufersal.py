@@ -178,8 +178,11 @@ class Shufersal(SupermarketChain):
                 if any(item.get("ItemCode") == barcode for item in items):
                     matched_promos.append(promo)
 
-            blacklist_items = ['4305214']
-            matched_promos = [promo for promo in matched_promos if promo.get("PromotionId") not in blacklist_items]
+            blacklist_items = {"4305214"}
+            matched_promos = [
+                promo for promo in matched_promos
+                if str(promo.get("PromotionId", "")).strip() not in blacklist_items
+            ]
 
             results[barcode] = matched_promos
 
