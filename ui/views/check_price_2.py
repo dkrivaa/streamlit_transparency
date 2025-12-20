@@ -13,7 +13,7 @@ def fresh_data(alias: str, store_code: str | int) -> dict | None:
     # Get the latest price URLs for the given chain and store code
     urls = run_async(chain.prices, store_code=store_code) if chain and store_code else None
     # Use pricefull URL and cookies if available
-    url = urls.get('pricefull', None) or urls.get('PriceFull', None) if urls else None
+    url = urls.get('pricefull') or urls.get('PriceFull') if urls else None
     cookies = urls.get('cookies', None) if urls else None
     # Make data dict from data in pricefull URL
     price_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
