@@ -48,14 +48,12 @@ def render():
                 placeholder="Select Product Barcode",
             )
 
-
-
-
-
             item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
                                      shoppinglist=[item]) if price_data else None
-
             st.write(item_details)
+
+    else:
+        st.warning("No data available for the selected chain and store. Please go back and select again.")
 
 
 if __name__ == "__main__":
