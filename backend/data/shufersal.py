@@ -161,11 +161,12 @@ class Shufersal(SupermarketChain):
     @classmethod
     async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int]) -> dict:
         """ Getting promos for barcodes in shopping list """
+        # Dict to hold results
         results = {}
 
         for barcode in shoppinglist:
             barcode = str(barcode)
-
+            # A list to hold matched promos for the barcode
             matched_promos = []
 
             for promo in promo_data:
@@ -178,12 +179,14 @@ class Shufersal(SupermarketChain):
                 if any(item.get("ItemCode") == barcode for item in items):
                     matched_promos.append(promo)
 
+            # Blacklist of PromotionIds to exclude (General promos)
             blacklist_items = {"4305214"}
             matched_promos = [
                 promo for promo in matched_promos
                 if str(promo.get("PromotionId", "")).strip() not in blacklist_items
             ]
 
+            # Make dict with barkide as key and list of matched promos as value
             results[barcode] = matched_promos
 
         return results
