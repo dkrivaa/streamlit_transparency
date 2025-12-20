@@ -137,7 +137,7 @@ class Shufersal(SupermarketChain):
         return [d for d in price_data if search_term in d['ItemName']]
 
     @classmethod
-    async def promo_blacklist(cls) -> set[str]:
+    def promo_blacklist(cls) -> set[str]:
         """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
         return {"4305214"}
 
