@@ -45,7 +45,14 @@ def render():
                 label='Select Barcode',
                 label_visibility='hidden',
                 options = sorted([d['ItemCode'] for d in price_data], key=int),
-                format_func=lambda x: f'{x} - {[d['ItemName'] for d in price_data if d["ItemCode"] == x][0]}',
+                format_func=lambda x: (
+                    f"{x} - "
+                    f"{next(
+                        d.get('ItemName') or d.get('ItemNm')
+                        for d in price_data
+                        if d.get('ItemCode') == x
+                    )}"
+                ),
                 index=None,
                 placeholder="Select Product Barcode",
             )
