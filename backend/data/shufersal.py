@@ -159,7 +159,7 @@ class Shufersal(SupermarketChain):
         return items
 
     @classmethod
-    async def get_shopping_promos(cls, promo_data: dict, shoppinglist: list[str | int]) -> dict:
+    async def get_shopping_promos(cls, promo_data: list[dict], shoppinglist: list[str | int]) -> dict:
         """ Getting promos for barcodes in shopping list """
         results = {}
         for barcode in shoppinglist:
