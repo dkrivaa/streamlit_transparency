@@ -30,6 +30,8 @@ def render():
     my_chain = st.session_state.get('chain', None)
     alias = my_chain.alias if my_chain else None
     my_store = st.session_state.get('store', None)
+
+    st.write(my_chain, alias, my_store)
     # Fetch fresh data for the selected chain and store
     price_data = fresh_data(alias=alias, store_code=my_store) if alias and my_store else None
 
