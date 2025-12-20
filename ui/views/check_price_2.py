@@ -33,9 +33,8 @@ def render():
     # Fetch fresh data for the selected chain and store
     price_data = fresh_data(alias=alias, store_code=my_store) if alias and my_store else None
 
-    st.write('Your Data is Ready!')
-
     if price_data:
+        st.write('Your Data is Ready!')
 
         with st.container(border=True):
             st.subheader("Product Details")
