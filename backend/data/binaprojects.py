@@ -173,15 +173,6 @@ class BinaProjects(SupermarketChain):
         return results
 
     @classmethod
-    async def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
-        """ Getting prices for barcodes in shopping list """
-        results = {}
-        for barcode in shoppinglist:
-            results[str(barcode)] = next((d for d in price_data if d['ItemCode'] == str(barcode)), None)
-
-        return results
-
-    @classmethod
     async def get_promo_data(cls, promo_data: dict):
         """ Extract the list of prices from task.result() """
         items = (promo_data.get("Root") or promo_data.get("root"))["Promotions"]["Promotion"]
