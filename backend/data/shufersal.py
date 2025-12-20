@@ -159,6 +159,18 @@ class Shufersal(SupermarketChain):
         return items
 
     @classmethod
+    async def get_shopping_promos(cls, promo_data: dict, shoppinglist: list[str | int]) -> dict:
+        """ Getting promos for barcodes in shopping list """
+        results = {}
+        for barcode in shoppinglist:
+            results[str(barcode)] = [
+                d for d in promo_data
+                if any(item['ItemCode'] == str(barcode) for item in d['PromotionItems']['Item'])
+            ]
+
+        return results
+
+    @classmethod
     async def search_for_item(cls, price_data: dict, search_term: str):
         """ Return dicts that has search term """
         return [d for d in price_data if search_term in d['ItemName']]

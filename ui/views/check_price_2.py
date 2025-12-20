@@ -49,6 +49,7 @@ def render():
     my_store = st.session_state.get('store', None)
     # Fetch fresh data for the selected chain and store
     price_data = fresh_price_data(alias=alias, store_code=my_store) if alias and my_store else None
+    promo_data = fresh_promo_data(alias=alias, store_code=my_store) if alias and my_store else None
 
     if price_data:
         st.write('Your Data is Ready!')
@@ -74,7 +75,8 @@ def render():
 
             item_details = run_async(my_chain.get_shopping_prices, price_data=price_data,
                                      shoppinglist=[item]) if price_data else None
-            item_promos = fresh_promo_data(alias=alias, store_code=my_store) if alias and my_store else None
+            item_promos = run_async(my_chain.get_shopping_promos, promo_data=promo_data,
+                                    shoppinglist=[item]) if promo_data else None
             st.write(item_details)
             st.write(item_promos)
 
