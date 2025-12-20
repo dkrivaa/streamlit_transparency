@@ -34,7 +34,6 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
     cookies = urls.get('cookies', None) if urls else None
     # Make data dict from data in pricefull URL
     promo_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
-    st.write(promo_dict)
     # Clean data dict to only include dicts of items
     promo_data = run_async(chain.get_promo_data, promo_data=promo_dict) if promo_dict else None
     return promo_data
