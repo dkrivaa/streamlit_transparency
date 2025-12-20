@@ -10,9 +10,9 @@ def fresh_data(alias: str, store_code: str | int) -> dict | None:
     """ Fetch fresh data for the given chain and store code """
     # Get the supermarket chain class from its alias
     chain = next((c for c in SupermarketChain.registry if c.alias == alias), None)
-    st.write(chain.url)
     # Get the latest price URLs for the given chain and store code
     urls = run_async(chain.prices, store_code=store_code) if chain and store_code else None
+    st.write(urls)
     # Use pricefull URL and cookies if available
     url = urls.get('pricefull', None) if urls else None
     cookies = urls.get('cookies', None) if urls else None
