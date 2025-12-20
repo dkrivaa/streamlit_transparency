@@ -150,6 +150,15 @@ class Shufersal(SupermarketChain):
         return results
 
     @classmethod
+    async def get_promo_data(cls, promo_data: dict):
+        """ Extract the list of prices from task.result() """
+        items = (promo_data.get("Root") or promo_data.get("root"))["Promotions"]["Promotion"]
+        for item in items:
+            item["ChainAlias"] = cls.alias
+
+        return items
+
+    @classmethod
     async def search_for_item(cls, price_data: dict, search_term: str):
         """ Return dicts that has search term """
         return [d for d in price_data if search_term in d['ItemName']]
