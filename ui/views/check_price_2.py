@@ -39,6 +39,27 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
     return promo_data
 
 
+def price_element(item: str, item_details: dict):
+    st.subheader('Price')
+    st.metric(
+        label=f"{item} - {
+        (
+                item_details.get(item, {}).get("ItemName")
+                or item_details.get(item, {}).get("ItemNm")
+                or "N/A"
+        )
+        }",
+        label_visibility='collapsed',
+        value=(
+            f"{item_details[item]['ItemPrice']} NIS"
+            if item_details and item_details.get(item)
+            else "N/A"
+        ),
+    )
+
+    st.divider()
+
+
 def promo_element(promo: dict):
     """ Renders a single promo element according to reward type"""
     # Dispatcher
@@ -112,32 +133,15 @@ def render():
                 # Get promo details for item from promo data
                 item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
                                                            blacklist=blacklist) if promo_data else None
-                # st.write(item_details)
                 # Present results - price
-                st.subheader('Price')
-                st.metric(
-                    label=f"{item} - {
-                        (
-                            item_details.get(item, {}).get("ItemName")
-                            or item_details.get(item, {}).get("ItemNm")
-                            or "N/A"
-                        )
-                    }",
-                    label_visibility='collapsed',
-                    value=(
-                        f"{item_details[item]['ItemPrice']} NIS"
-                        if item_details and item_details.get(item)
-                        else "N/A"
-                    ),
-                )
-
-                st.divider()
+                price_element(item, item_details)
 
                 # Show promotions
-                st.subheader('Promotions')
-                if item_promos and item_promos.get(item):
-                    for promo in item_promos[item]:
-                        promo_element(promo)
+                if item_promos:
+                    st.subheader('Promotions')
+                    if item_promos and item_promos.get(item):
+                        for promo in item_promos[item]:
+                            promo_element(promo)
                 else:
                     st.info("No promotions available for this product at the moment.")
 
