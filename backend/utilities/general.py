@@ -107,8 +107,10 @@ def rtl(text: str):
     #     f'<div dir="rtl" style="white-space: pre-wrap;">{text}</div>',
     #     unsafe_allow_html=True
     # )
-    RLE = "\u202B"
-    PDF = "\u202C"
-    return f"{RLE}{text}{PDF}"
+    return f"""
+        <div style="direction: rtl; unicode-bidi: plaintext; text-align: right;">
+            {text}
+        </div>
+        """
 
 
