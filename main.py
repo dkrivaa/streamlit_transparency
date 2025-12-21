@@ -43,10 +43,11 @@ menu_pages = [home_page, check_price_page1, shopping_list_page, ]
 pg = st.navigation(pages=pages, position='hidden')
 
 # Create custom navigation with columns
-cols = st.columns(len(menu_pages))
-for col, page in zip(cols, menu_pages):
-    with col:
-        st.page_link(page, label=page.title)
+with st.container(border=True):
+    cols = st.columns(len(menu_pages))
+    for col, page in zip(cols, menu_pages):
+        with col:
+            st.page_link(page, label=page.title)
 
 
 pg.run()
