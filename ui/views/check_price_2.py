@@ -41,6 +41,7 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
 
 def promo_element(promo: dict):
     """ Renders a single promo element """
+    st.write("Promotion Type:", promo.get('RewardType', 'N/A'))
     if promo.get('RewardType') == '1':
          promo_element_1(promo)
 
