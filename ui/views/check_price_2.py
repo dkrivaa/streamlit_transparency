@@ -108,9 +108,7 @@ def render():
                     st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
                     st.metric(
                         label="Promotion Price",
-                        value=f"{promo.get('DiscountedPrice')} NIS"
-                        if promo.get('RewardType' == '1')
-                        else "N/A",
+                        value=f"{promo.get('DiscountedPrice')} NIS",
                     )
                     st.write(f"- Valid To: {promo.get('PromotionEndDate', 'N/A')}")
                     st.divider()
