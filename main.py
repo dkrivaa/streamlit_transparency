@@ -47,6 +47,7 @@ nav = st.pills(
     label_visibility='hidden',
     options=menu_pages,
     format_func=lambda x: x.title,
+    default=None,
     key='main_nav',
     on_change=lambda x: st.switch_page(x.page)
     )
