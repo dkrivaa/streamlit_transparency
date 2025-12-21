@@ -82,6 +82,19 @@ def render():
             item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
                                                        blacklist=blacklist) if promo_data else None
             st.write(item_details)
+            # Present results - price
+            st.metric(
+                label="Latest Price",
+                value=(
+                    f"{item_details[item]['ItemPrice']} "
+                    f"{item_details[item]['ItemCurrency']}"
+                    if item_details and item_details.get(item)
+                    else "N/A"
+                ),
+                delta=(
+                    item
+                ),
+            )
             st.write(item_promos)
 
     else:
