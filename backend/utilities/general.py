@@ -102,6 +102,10 @@ def all_classes():
 
 def rtl(text: str):
     """ Display RTL text in Streamlit. """
-    st.markdown(f'<div dir="rtl">{text}</div>', unsafe_allow_html=True)
+    # st.markdown(f'<div dir="rtl">{text}</div>', unsafe_allow_html=True)
+    st.markdown(
+        f'<div dir="rtl" style="white-space: pre-wrap;">{text}</div>',
+        unsafe_allow_html=True
+    )
 
 
