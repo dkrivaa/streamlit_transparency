@@ -38,9 +38,7 @@ db_page = st.Page(
     page='ui/views/db.py',
 )
 
-
 pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db_page]
-nav_pages = [home_page, check_price_page1, shopping_list_page]
-pg = st.navigation(pages=nav_pages, position='top')
+pg = st.navigation(pages=pages, position='top')
 
 pg.run()
