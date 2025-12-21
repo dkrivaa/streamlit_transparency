@@ -109,7 +109,7 @@ def render():
                     st.metric(
                         label="Promotion Price",
                         value=f"{promo.get('DiscountedPrice', 'N/A')} NIS"
-                        if promo.get('RewardType == 1')
+                        if promo.get('RewardType' == '1')
                         else "N/A",
                     )
                     st.write(f"- Valid To: {promo.get('PromotionEndDate', 'N/A')}")
