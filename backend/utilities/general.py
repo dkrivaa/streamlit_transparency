@@ -100,3 +100,8 @@ def all_classes():
     return SupermarketChain.registry
 
 
+def rtl(text: str):
+    """ Display RTL text in Streamlit. """
+    st.markdown(f'<div dir="rtl">{text}</div>', unsafe_allow_html=True)
+
+

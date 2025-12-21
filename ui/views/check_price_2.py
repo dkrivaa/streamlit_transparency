@@ -1,8 +1,9 @@
 import streamlit as st
 
-from backend.utilities.general import run_async
+from backend.utilities.general import run_async, rtl
 from backend.utilities.url_to_dict import data_dict
 from backend.data.super_class import SupermarketChain
+
 
 
 @st.cache_data(ttl=1200)
@@ -79,8 +80,7 @@ def promo_element(promo: dict):
 
 def render_quantity_discount(chain: SupermarketChain, promo: dict):
     """ Renders a single promo element with reward type 1"""
-    st.markdown(f"**<div dir='rtl' style='white-space: pre-wrap;'>{promo.get('PromotionDescription', 'N/A')}</div>**",
-                unsafe_allow_html=True)
+    st.markdown(f"{rtl(promo.get('PromotionDescription', 'N/A'))}**")
     st.metric(
         label="Promotion Price",
         value=f"{promo.get('DiscountedPrice')} NIS",
