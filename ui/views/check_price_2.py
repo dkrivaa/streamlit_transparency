@@ -66,6 +66,7 @@ def promo_element(promo: dict):
     PROMO_RENDERERS = {
         '1': render_quantity_discount,
         '2': render_percentage_discount,
+        '10': render_quantity_discount,
     }
     # Get reward type and corresponding handler
     reward_type = promo.get('RewardType')
