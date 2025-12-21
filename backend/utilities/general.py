@@ -101,10 +101,5 @@ def all_classes():
     return SupermarketChain.registry
 
 
-def rtl(text: str):
-    """ Display RTL text in Streamlit. """
-    LRM = "\u200E"
-    text = re.sub(r"([\-–—])(\d)", rf"{LRM}\1\2", text)
-    return text
 
 
