@@ -157,7 +157,7 @@ class CarrefourParent(SupermarketChain):
     @classmethod
     async def promo_blacklist(cls) -> set[str]:
         """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
-        return {'11366992'}  # When blacklist the format should be: {"4305214"}
+        return {'11366992', '80135876'}  # When blacklist the format should be: {"4305214"}
 
 
 class Carrefour(CarrefourParent):
