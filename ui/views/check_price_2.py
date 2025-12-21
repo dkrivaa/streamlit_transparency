@@ -81,7 +81,7 @@ def render():
             # Get promo details for item from promo data
             item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
                                                        blacklist=blacklist) if promo_data else None
-            st.write(item_details)
+            # st.write(item_details)
             # Present results - price
             st.subheader('Price')
             st.metric(
@@ -99,6 +99,17 @@ def render():
                     else "N/A"
                 ),
             )
+
+            st.subheader('Promotions')
+            if item_promos and item_promos.get(item):
+                for promo in item_promos[item]:
+                    st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
+
+                    st.write(f"- Valid To: {promo.get('EndDate', 'N/A')}")
+                    st.divider()
+            else:
+                st.info("No promotions available for this product at the moment.")
+
             st.write(item_promos)
 
     else:
