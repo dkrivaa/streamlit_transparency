@@ -13,9 +13,8 @@ def sort_classes_by_alias(classes: list[type]) -> list[type]:
 
 def render():
     """ The main function to render the check price page 1 """
-    st.title("Check Product Price")
-
     with st.container(border=True):
+        st.title("Check Product Price")
         st.subheader("Where are you shopping?")
         # Select Supermarket Chain
         chain = st.selectbox(
