@@ -52,11 +52,11 @@ def render():
     promo_data = fresh_promo_data(alias=alias, store_code=my_store) if alias and my_store else None
 
     if price_data:
-        st.write('Your Data is Ready!')
+        st.success('Your Data is Ready!')
 
         with st.container(border=True):
             st.subheader("Product Details")
-            # Get item details for a sample barcode
+            # Get item details for a barcode
             item = st.selectbox(
                 label='Select Barcode',
                 label_visibility='hidden',
