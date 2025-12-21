@@ -255,18 +255,6 @@ class PublishedPrices(SupermarketChain):
         """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
         return set()  # When blacklist the format should be: {"4305214"}
 
-    @classmethod
-    def promo_audience(cls, promo:dict) -> str | None:
-        """ Return the audience of the promo if exists """
-        # Posible audiences:
-        audiences = {
-            '0': 'All Customers',
-            '1': 'Club Members',
-            '2': 'Creditcart Holders',
-            '3': 'Other / Unspecified',
-        }
-        return audiences[promo.get('Clubs').get('ClubId', 'Unspecified')]
-
 
 class RamiLevi(PublishedPrices):
     abstract = False

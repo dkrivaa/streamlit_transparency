@@ -130,4 +130,16 @@ class SupermarketChain:
 
         return results
 
+    @classmethod
+    def promo_audience(cls, promo: dict) -> str | None:
+        """ Return the audience of the promo if exists """
+        # Posible audiences:
+        audiences = {
+            '0': 'All Customers',
+            '1': 'Club Members',
+            '2': 'Creditcart Holders',
+            '3': 'Other / Unspecified',
+        }
+        return audiences[promo.get('Clubs').get('ClubId', 'Unspecified')]
+
 
