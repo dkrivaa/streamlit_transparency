@@ -22,21 +22,25 @@ home_page = st.Page(
 check_price_page1 = st.Page(
     title='Check Price',
     page='ui/views/check_price_1.py',
+    icon=":material/home:",
 )
 
 check_price_page2 = st.Page(
     title='Check Price',
     page='ui/views/check_price_2.py',
+    icon=":material/home:",
 )
 
 shopping_list_page = st.Page(
     title='Shopping List',
     page='ui/views/shopping_list.py',
+    icon=":material/home:",
 )
 
 db_page = st.Page(
     title='Database',
     page='ui/views/db.py',
+    icon=":material/home:",
 )
 
 pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db_page]
@@ -48,7 +52,7 @@ with st.container(border=True):
     cols = st.columns(len(menu_pages))
     for col, page in zip(cols, menu_pages):
         with col:
-            st.page_link(page, label=page.title, icon=page.icon | None)
+            st.page_link(page, label=page.title, icon=page.icon)
 
 
 pg.run()
