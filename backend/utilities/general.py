@@ -89,16 +89,9 @@ async def url_request(
             await client.aclose()
 
 
-def get_chain_class_by_alias(alias: str):
-    alias = alias.lower()
-    for cls in SupermarketChain.registry:
-        if getattr(cls, "alias", "").lower() == alias:
-            return cls
-    return None
 
 
-def all_classes():
-    return SupermarketChain.registry
+
 
 
 
