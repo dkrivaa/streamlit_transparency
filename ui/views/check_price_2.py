@@ -106,7 +106,12 @@ def render():
             if item_promos and item_promos.get(item):
                 for promo in item_promos[item]:
                     st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
-
+                    st.metric(
+                        label="Promotion Price",
+                        value=f"{promo.get('DiscountedPrice', 'N/A')} NIS"
+                        if promo.get('RewardType == 1')
+                        else "N/A",
+                    )
                     st.write(f"- Valid To: {promo.get('PromotionEndDate', 'N/A')}")
                     st.divider()
             else:
