@@ -84,7 +84,7 @@ def render():
             st.write(item_details)
             # Present results - price
             st.metric(
-                label=f"Latest Price - {
+                label=f"{item} - {
                     (
                         item_details.get(item, {}).get("ItemName")
                         or item_details.get(item, {}).get("ItemNm")
@@ -95,9 +95,6 @@ def render():
                     f"{item_details[item]['ItemPrice']} NIS"
                     if item_details and item_details.get(item)
                     else "N/A"
-                ),
-                delta=(
-                    item
                 ),
             )
             st.write(item_promos)
