@@ -137,6 +137,7 @@ def render():
                 price_element(item, item_details)
 
                 # Show promotions
+                st.write(item_promos)
                 if item_promos:
                     st.subheader('Promotions')
                     if item_promos and item_promos.get(item):
@@ -145,7 +146,7 @@ def render():
                     else:
                         st.info("No promotions available for this product at the moment.")
 
-                st.write(item_promos)
+
 
     else:
         st.warning("No data available for the selected chain and store. Please go back and select again.")
