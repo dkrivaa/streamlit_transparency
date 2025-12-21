@@ -140,6 +140,7 @@ class SupermarketChain:
             '2': 'Creditcart Holders',
             '3': 'Other / Unspecified',
         }
-        return audiences[promo.get('Clubs').get('ClubId', 'Unspecified')]
+        # return audiences[promo.get('Clubs').get('ClubId', 'Unspecified')]
+        return audiences[promo.get('AdditionalRestrictions').get('Clubs').get('ClubId', 'Unspecified')]
 
 
