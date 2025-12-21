@@ -48,5 +48,5 @@ pg.run()
 nav = st.pills(
                 label='navigator',
                 label_visibility='hidden',
-                options=[st.page_link[page]["title"] for page in pages],
+                options=[st.page_link[page]["title"] for page in menu_pages],
             )
