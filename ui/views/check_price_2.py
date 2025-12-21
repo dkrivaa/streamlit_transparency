@@ -39,6 +39,23 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
     return promo_data
 
 
+def promo_element(promo: dict):
+    """ Renders a single promo element """
+    if promo.get('RewardType') == 1:
+        promo_element_1(promo)
+
+
+def promo_element_1(promo: dict):
+    """ Renders a single promo element with reward type 1"""
+    st.markdown(f"**{promo.get('PromoDesc', 'N/A')}**")
+    st.metric(
+        label="Promotion Price",
+        value=f"{promo.get('PromoPrice')} NIS",
+    )
+    st.write(f"- Valid Until: {promo.get('EndDate', 'N/A')}")
+    st.divider()
+
+
 def render():
     """" The main function to render the check price page 2 """
     st.title("Check Product Price")
@@ -102,16 +119,11 @@ def render():
 
             st.divider()
 
+            # Show promotions
             st.subheader('Promotions')
             if item_promos and item_promos.get(item):
                 for promo in item_promos[item]:
-                    st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
-                    st.metric(
-                        label="Promotion Price",
-                        value=f"{promo.get('DiscountedPrice')} NIS",
-                    )
-                    st.write(f"- Valid To: {promo.get('PromotionEndDate', 'N/A')}")
-                    st.divider()
+                    promo_element(promo)
             else:
                 st.info("No promotions available for this product at the moment.")
 
