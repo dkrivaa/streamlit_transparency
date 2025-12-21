@@ -52,6 +52,6 @@ nav = st.pills(
     )
 
 if nav:
-    st.write(nav)
+    nav.run()
 
 pg.run()
