@@ -102,44 +102,46 @@ def render():
                 placeholder="Select Product Barcode",
             )
 
-            # Get price details for item from price data
-            item_details = my_chain.get_shopping_prices(price_data=price_data,
-                                                        shoppinglist=[item]) if price_data else None
-            # Get relevant promo blacklist for the chain
-            blacklist = my_chain.promo_blacklist() if my_chain else set()
-            # Get promo details for item from promo data
-            item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
-                                                       blacklist=blacklist) if promo_data else None
-            # st.write(item_details)
-            # Present results - price
-            st.subheader('Price')
-            st.metric(
-                label=f"{item} - {
-                    (
-                        item_details.get(item, {}).get("ItemName")
-                        or item_details.get(item, {}).get("ItemNm")
-                        or "N/A"
-                    )
-                }",
-                label_visibility='collapsed',
-                value=(
-                    f"{item_details[item]['ItemPrice']} NIS"
-                    if item_details and item_details.get(item)
-                    else "N/A"
-                ),
-            )
+            # Continue only if an item is selected
+            if item:
+                # Get price details for item from price data
+                item_details = my_chain.get_shopping_prices(price_data=price_data,
+                                                            shoppinglist=[item]) if price_data else None
+                # Get relevant promo blacklist for the chain
+                blacklist = my_chain.promo_blacklist() if my_chain else set()
+                # Get promo details for item from promo data
+                item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
+                                                           blacklist=blacklist) if promo_data else None
+                # st.write(item_details)
+                # Present results - price
+                st.subheader('Price')
+                st.metric(
+                    label=f"{item} - {
+                        (
+                            item_details.get(item, {}).get("ItemName")
+                            or item_details.get(item, {}).get("ItemNm")
+                            or "N/A"
+                        )
+                    }",
+                    label_visibility='collapsed',
+                    value=(
+                        f"{item_details[item]['ItemPrice']} NIS"
+                        if item_details and item_details.get(item)
+                        else "N/A"
+                    ),
+                )
 
-            st.divider()
+                st.divider()
 
-            # Show promotions
-            st.subheader('Promotions')
-            if item_promos and item_promos.get(item):
-                for promo in item_promos[item]:
-                    promo_element(promo)
-            else:
-                st.info("No promotions available for this product at the moment.")
+                # Show promotions
+                st.subheader('Promotions')
+                if item_promos and item_promos.get(item):
+                    for promo in item_promos[item]:
+                        promo_element(promo)
+                else:
+                    st.info("No promotions available for this product at the moment.")
 
-            st.write(item_promos)
+                st.write(item_promos)
 
     else:
         st.warning("No data available for the selected chain and store. Please go back and select again.")
