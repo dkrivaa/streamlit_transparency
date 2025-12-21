@@ -48,11 +48,13 @@ def promo_element(promo: dict):
     # Get reward type and corresponding handler
     reward_type = promo.get('RewardType')
     handler = PROMO_RENDERERS.get(reward_type, None)
+    # Get chain from session state
+    chain = st.session_state.get('chain', None)
     # Call handler if exists
-    handler(promo)
+    handler(chain, promo)
 
 
-def render_quantity_discount(promo: dict):
+def render_quantity_discount(chain: SupermarketChain, promo: dict):
     """ Renders a single promo element with reward type 1"""
     st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
     st.metric(

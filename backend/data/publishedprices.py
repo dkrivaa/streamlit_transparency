@@ -244,23 +244,6 @@ class PublishedPrices(SupermarketChain):
                                                       subchain_name=s.get("SubChainName")))
         return {'stores_data_list': stores}
 
-    # @classmethod
-    # async def get_price_data(cls, price_data: dict):
-    #     """ Extract the list of prices from task.result() """
-    #     items = (price_data.get("Root") or price_data.get("root"))["Items"]["Item"]
-    #     for item in items:
-    #         item["ChainAlias"] = cls.alias
-    #
-    #     return items
-    #
-    # @classmethod
-    # async def get_shopping_prices(cls, price_data: dict, shoppinglist: list[str | int]) -> dict:
-    #     """ Getting prices for barcodes in shopping list """
-    #     results = {}
-    #     for barcode in shoppinglist:
-    #         results[str(barcode)] = next((d for d in price_data if d['ItemCode'] == str(barcode)), None)
-    #
-    #     return results
 
     @classmethod
     async def search_for_item(cls, price_data: dict, search_term: str):
@@ -271,6 +254,18 @@ class PublishedPrices(SupermarketChain):
     def promo_blacklist(cls) -> set[str]:
         """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
         return set()  # When blacklist the format should be: {"4305214"}
+
+    @classmethod
+    def promo_audience(cls, promo:dict) -> str | None:
+        """ Return the audience of the promo if exists """
+        # Posible audiences:
+        audiences = {
+            '0': 'All Customers',
+            '1': 'Club Members',
+            '2': 'Creditcart Holders',
+            '3': 'Other / Unspecified',
+        }
+        return audiences[promo.get('Clubs').get('ClubId', 'Unspecified')]
 
 
 class RamiLevi(PublishedPrices):
