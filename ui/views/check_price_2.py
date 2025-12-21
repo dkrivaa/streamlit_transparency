@@ -19,6 +19,7 @@ def fresh_price_data(alias: str, store_code: str | int) -> dict | None:
     price_dict = run_async(data_dict, url=url, cookies=cookies) if url else None
     # Clean data dict to only include dicts of items
     price_data = chain.get_price_data(price_data=price_dict) if price_dict else None
+    st.write(price_data)
     return price_data
 
 
