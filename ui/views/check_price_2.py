@@ -87,7 +87,6 @@ def render():
                 label="Latest Price",
                 value=(
                     f"{item_details[item]['ItemPrice']} "
-                    f"{item_details[item]['ItemCurrency']}"
                     if item_details and item_details.get(item)
                     else "N/A"
                 ),
