@@ -22,25 +22,25 @@ home_page = st.Page(
 check_price_page1 = st.Page(
     title='Check Price',
     page='ui/views/check_price_1.py',
-    icon=":material/home:",
+    icon=":material/attach_money:",
 )
 
 check_price_page2 = st.Page(
     title='Check Price',
     page='ui/views/check_price_2.py',
-    icon=":material/home:",
+    icon=":material/attach_money:",
 )
 
 shopping_list_page = st.Page(
     title='Shopping List',
     page='ui/views/shopping_list.py',
-    icon=":material/home:",
+    icon=":material/list:",
 )
 
 db_page = st.Page(
     title='Database',
     page='ui/views/db.py',
-    icon=":material/home:",
+    icon=":material/data_table:",
 )
 
 pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db_page]
