@@ -157,7 +157,6 @@ def render():
                 price_element(item, item_details)
 
                 # Show promotions
-                st.write(item_promos)
                 if item_promos:
                     st.subheader('Promotions')
                     if item_promos and item_promos.get(item):
