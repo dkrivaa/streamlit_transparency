@@ -153,7 +153,7 @@ def render():
                 # Get promo details for item from promo data
                 item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
                                                            blacklist=blacklist) if promo_data else None
-                # Present results - price
+                # Show price
                 price_element(item, item_details)
 
                 # Show promotions
@@ -165,8 +165,6 @@ def render():
                             promo_element(promo)
                     else:
                         st.info("No promotions available for this product at the moment.")
-
-
 
     else:
         st.warning("No data available for the selected chain and store. Please go back and select again.")
