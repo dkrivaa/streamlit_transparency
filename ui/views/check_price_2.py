@@ -142,8 +142,8 @@ def render():
                     if item_promos and item_promos.get(item):
                         for promo in item_promos[item]:
                             promo_element(promo)
-                else:
-                    st.info("No promotions available for this product at the moment.")
+                    else:
+                        st.info("No promotions available for this product at the moment.")
 
                 st.write(item_promos)
 
