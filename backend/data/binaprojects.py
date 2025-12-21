@@ -160,7 +160,7 @@ class BinaProjects(SupermarketChain):
         return [d for d in price_data if search_term in d['ItemNm']]
 
     @classmethod
-    async def promo_blacklist(cls) -> set[str]:
+    def promo_blacklist(cls) -> set[str]:
         """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
         return set()  # When blacklist the format should be: {"4305214"}
 
