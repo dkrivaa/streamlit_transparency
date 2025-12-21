@@ -39,28 +39,28 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
     return promo_data
 
 
-def promo_element(promo: dict):
+def promo_element(item: str, promo: dict):
     """ Renders a single promo element """
     PROMO_RENDERERS = {
         '1': render_quantity_discount,
     }
 
-    reward_type = promo.get('RewardType')
+    reward_type = promo[item].get('RewardType')
     handler = PROMO_RENDERERS.get(reward_type, None)
 
-    handler(promo)
+    handler(item, promo)
 
 
 
 
-def render_quantity_discount(promo: dict):
+def render_quantity_discount(item: str, promo: dict):
     """ Renders a single promo element with reward type 1"""
-    st.markdown(f"**{promo.get('PromoDesc', 'N/A')}**")
+    st.markdown(f"**{promo[item].get('PromotionDescription', 'N/A')}**")
     st.metric(
         label="Promotion Price",
-        value=f"{promo.get('PromoPrice')} NIS",
+        value=f"{promo[item].get('DiscountedPrice')} NIS",
     )
-    st.write(f"- Valid Until: {promo.get('EndDate', 'N/A')}")
+    st.write(f"- Valid Until: {promo[item].get('PromotionEndDate', 'N/A')}")
     st.divider()
 
 
@@ -131,7 +131,7 @@ def render():
             st.subheader('Promotions')
             if item_promos and item_promos.get(item):
                 for promo in item_promos[item]:
-                    promo_element(promo)
+                    promo_element(item, promo)
             else:
                 st.info("No promotions available for this product at the moment.")
 
