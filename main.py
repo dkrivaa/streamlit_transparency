@@ -48,7 +48,7 @@ with st.container(border=True):
     cols = st.columns(len(menu_pages))
     for col, page in zip(cols, menu_pages):
         with col:
-            st.page_link(page, label=page.title, icon=page.icon)
+            st.page_link(page, label=page.title, icon=page.icon | None)
 
 
 pg.run()
