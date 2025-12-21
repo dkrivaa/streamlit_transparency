@@ -14,7 +14,6 @@ def sort_classes_by_alias(classes: list[type]) -> list[type]:
 def render():
     """ The main function to render the check price page 1 """
     st.title("Check Product Price")
-    st.divider()
 
     with st.container(border=True):
         st.subheader("Where are you shopping?")
