@@ -41,12 +41,19 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
 
 def promo_element(promo: dict):
     """ Renders a single promo element """
-    st.write("Promotion Type:", promo.get('RewardType', 'N/A'))
-    if promo.get('RewardType') == '1':
-         promo_element_1(promo)
+    PROMO_RENDERERS = {
+        '1': render_quantity_discount,
+    }
+
+    reward_type = promo.get('RewardType')
+    handler = PROMO_RENDERERS.get(reward_type, None)
+
+    handler(promo)
 
 
-def promo_element_1(promo: dict):
+
+
+def render_quantity_discount(promo: dict):
     """ Renders a single promo element with reward type 1"""
     st.markdown(f"**{promo.get('PromoDesc', 'N/A')}**")
     st.metric(
