@@ -68,6 +68,7 @@ def promo_element(promo: dict):
         '1': render_quantity_discount,
         '2': render_percentage_discount,
         '3': render_percentage_discount,
+        '6': render_quantity_discount,
         '10': render_quantity_discount,
     }
     # Get reward type and corresponding handler
@@ -84,10 +85,11 @@ def render_quantity_discount(chain: SupermarketChain, promo: dict):
     st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
     st.metric(
         label="Promotion Price",
-        value=f"{promo.get('DiscountedPrice')} NIS",
+        value=f"{promo.get('DiscountedPrice', 'N/A')} NIS",
     )
     st.write(f"- Minimum Quantity: {promo.get('MinQty', 'N/A')}")
     st.write(f"- Maximum Quantity: {promo.get('MaxQty', 'N/A')}")
+    st.write(f"- Minimum Purchase: {promo.get('MinPurchaseAmnt', 'N/A')}")
     st.write(f"- Target Customers: {chain.promo_audience(promo)}")
     st.write(f"- Valid Until: {promo.get('PromotionEndDate', 'N/A')}")
     st.divider()
