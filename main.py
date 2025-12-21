@@ -46,6 +46,7 @@ nav = st.pills(
     label='Menu',
     label_visibility='hidden',
     options=menu_pages,
+    format_func=lambda x: x.title,
     key='main_nav')
 
 pg.run()
