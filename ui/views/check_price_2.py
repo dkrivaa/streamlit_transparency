@@ -81,17 +81,18 @@ def render():
             # Get promo details for item from promo data
             item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
                                                        blacklist=blacklist) if promo_data else None
-            # st.write(item_details)
+            st.write(item_details)
             # Present results - price
             st.subheader('Price')
             st.metric(
-                # label=f"{item} - {
-                #     (
-                #         item_details.get(item, {}).get("ItemName")
-                #         or item_details.get(item, {}).get("ItemNm")
-                #         or "N/A"
-                #     )
-                # }",
+                label=f"{item} - {
+                    (
+                        item_details.get(item, {}).get("ItemName")
+                        or item_details.get(item, {}).get("ItemNm")
+                        or "N/A"
+                    )
+                }",
+                label_visibility='hidden',
                 value=(
                     f"{item_details[item]['ItemPrice']} NIS"
                     if item_details and item_details.get(item)
