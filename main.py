@@ -47,7 +47,7 @@ nav = st.pills(
     label_visibility='hidden',
     options=menu_pages,
     format_func=lambda x: x.title,
-    default=None,
+    default=home_page,
     key='main_nav',
     )
 
