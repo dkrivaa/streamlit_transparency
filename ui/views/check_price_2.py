@@ -100,12 +100,14 @@ def render():
                 ),
             )
 
+            st.divider()
+
             st.subheader('Promotions')
             if item_promos and item_promos.get(item):
                 for promo in item_promos[item]:
                     st.markdown(f"**{promo.get('PromotionDescription', 'N/A')}**")
 
-                    st.write(f"- Valid To: {promo.get('EndDate', 'N/A')}")
+                    st.write(f"- Valid To: {promo.get('PromotionEndDate', 'N/A')}")
                     st.divider()
             else:
                 st.info("No promotions available for this product at the moment.")
