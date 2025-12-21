@@ -40,17 +40,16 @@ def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
 
 
 def promo_element(promo: dict):
-    """ Renders a single promo element """
+    """ Renders a single promo element according to reward type"""
+    # Dispatcher
     PROMO_RENDERERS = {
         '1': render_quantity_discount,
     }
-
+    # Get reward type and corresponding handler
     reward_type = promo.get('RewardType')
     handler = PROMO_RENDERERS.get(reward_type, None)
-
+    # Call handler if exists
     handler(promo)
-
-
 
 
 def render_quantity_discount(promo: dict):
@@ -60,6 +59,9 @@ def render_quantity_discount(promo: dict):
         label="Promotion Price",
         value=f"{promo.get('DiscountedPrice')} NIS",
     )
+    st.write(f"- Minimum Quantity: {promo.get('MinQty', 'N/A')}")
+    st.write(f"- Maximum Quantity: {promo.get('MaxQty', 'N/A')}")
+    st.write(f"- Target Customers: {promo.get('clubs', 'N/A')}")
     st.write(f"- Valid Until: {promo.get('PromotionEndDate', 'N/A')}")
     st.divider()
 
