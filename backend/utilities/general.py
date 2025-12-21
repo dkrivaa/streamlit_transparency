@@ -1,6 +1,7 @@
 import httpx
 import asyncio
 import streamlit as st
+import re
 
 from backend.data.super_class import SupermarketChain
 
@@ -102,15 +103,8 @@ def all_classes():
 
 def rtl(text: str):
     """ Display RTL text in Streamlit. """
-    # st.markdown(f'<div dir="rtl">{text}</div>', unsafe_allow_html=True)
-    # st.markdown(
-    #     f'<div dir="rtl" style="white-space: pre-wrap;">{text}</div>',
-    #     unsafe_allow_html=True
-    # )
-    return f"""
-        <div style="direction: rtl; unicode-bidi: plaintext; text-align: right;">
-            {text}
-        </div>
-        """
+    LRM = "\u200E"
+    text = re.sub(r"([\-–—])(\d)", rf"{LRM}\1\2", text)
+    return text
 
 
