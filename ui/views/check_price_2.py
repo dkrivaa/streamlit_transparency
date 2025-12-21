@@ -63,7 +63,7 @@ def render_quantity_discount(chain: SupermarketChain, promo: dict):
     )
     st.write(f"- Minimum Quantity: {promo.get('MinQty', 'N/A')}")
     st.write(f"- Maximum Quantity: {promo.get('MaxQty', 'N/A')}")
-    st.write(f"- Target Customers: {promo.get('Clubs', 'N/A')}")
+    st.write(f"- Target Customers: {chain.promo_audience(promo)}")
     st.write(f"- Valid Until: {promo.get('PromotionEndDate', 'N/A')}")
     st.divider()
 
