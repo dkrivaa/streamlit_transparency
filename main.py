@@ -42,14 +42,16 @@ pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db
 menu_pages = [home_page, check_price_page1, shopping_list_page, ]
 pg = st.navigation(pages=pages, position='hidden')
 
-st.pills(
+nav = st.pills(
     label='Menu',
     label_visibility='hidden',
     options=menu_pages,
     format_func=lambda x: x.title,
     default=None,
     key='main_nav',
-    on_change=lambda x: st.switch_page(x.page)
     )
+
+if nav:
+    st.switch_page(nav.page)
 
 pg.run()
