@@ -85,13 +85,13 @@ def render():
             # Present results - price
             st.subheader('Price')
             st.metric(
-                label=f"{item} - {
-                    (
-                        item_details.get(item, {}).get("ItemName")
-                        or item_details.get(item, {}).get("ItemNm")
-                        or "N/A"
-                    )
-                }",
+                # label=f"{item} - {
+                #     (
+                #         item_details.get(item, {}).get("ItemName")
+                #         or item_details.get(item, {}).get("ItemNm")
+                #         or "N/A"
+                #     )
+                # }",
                 value=(
                     f"{item_details[item]['ItemPrice']} NIS"
                     if item_details and item_details.get(item)
