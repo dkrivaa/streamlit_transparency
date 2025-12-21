@@ -42,7 +42,6 @@ pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db
 menu_pages = [home_page, check_price_page1, shopping_list_page, ]
 pg = st.navigation(pages=pages, position='hidden')
 
-pg.run()
 
 """ Simple navigator function for Streamlit apps """
 nav = st.pills(
@@ -50,3 +49,6 @@ nav = st.pills(
                 label_visibility='hidden',
                 options=[st.page_link[page]["title"] for page in menu_pages],
             )
+
+
+pg.run()
