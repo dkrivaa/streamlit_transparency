@@ -92,7 +92,7 @@ def render():
                         or "N/A"
                     )
                 }",
-                label_visibility='hidden',
+                label_visibility='collapsed',
                 value=(
                     f"{item_details[item]['ItemPrice']} NIS"
                     if item_details and item_details.get(item)
