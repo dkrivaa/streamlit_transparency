@@ -8,15 +8,15 @@ from backend.database.utilities import get_stores_for_chain
 def render():
     """ The main function to render the shopping list page 1 """
     with st.container():
-        st.title('Make Shopping List')
-        st.subheader('Choose up to 3 supermarket chains')
+        st.subheader('Make Shopping List')
+        st.write('Choose up to 3 supermarket chains')
 
         for chain_num in range(1, 4):  # 1, 2, 3
             chain_key = f'chain{chain_num}'
             store_key = f'store{chain_num}'
 
             with st.container(border=True):
-                st.subheader(f'Supermarket Chain {chain_num}:')
+                st.write(f'Supermarket Chain {chain_num}:')
 
                 chain = st.selectbox(
                     label=f"Select Supermarket Chain {chain_num}",
