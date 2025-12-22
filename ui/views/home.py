@@ -11,26 +11,27 @@ def options():
 
 def render():
     """ The main function to render the home page """
-    # Title and subtitle
-    st.title("CLARITY")
-    st.subheader('Supermarket Price Transparency')
-    st.divider()
+    with st.container():
+        # Title and subtitle
+        st.title("CLARITY")
+        st.subheader('Supermarket Price Transparency')
+        st.divider()
 
-    # Options for navigation
-    option_map = options()
+        # Options for navigation
+        option_map = options()
 
-    # Pills selection for navigation
-    selection = st.pills(
-        'Select',
-        options=option_map.keys(),
-        format_func=lambda option: f'{option_map[option]['icon']} {option_map[option]['text']}',
-        selection_mode="single",
-        default=None,
-    )
+        # Pills selection for navigation
+        selection = st.pills(
+            'Select',
+            options=option_map.keys(),
+            format_func=lambda option: f'{option_map[option]['icon']} {option_map[option]['text']}',
+            selection_mode="single",
+            default=None,
+        )
 
-    # Navigate to selected page
-    if selection is not None:
-        st.switch_page(option_map[selection]['page'])
+        # Navigate to selected page
+        if selection is not None:
+            st.switch_page(option_map[selection]['page'])
 
 
 if __name__ == "__main__":
