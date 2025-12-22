@@ -44,7 +44,7 @@ db_page = st.Page(
 )
 
 pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db_page]
-menu_pages = [home_page, check_price_page1, shopping_list_page, ]
+menu_pages = [home_page, ]
 pg = st.navigation(pages=pages, position='hidden')
 
 # Create custom navigation with columns
