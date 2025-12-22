@@ -46,3 +46,7 @@ def render():
                         st.session_state[chain_key] = chain
                         st.session_state[f'alias{chain_num}'] = chain.alias
                         st.session_state[store_key] = store
+
+
+if __name__ == "__main__":
+    render()
