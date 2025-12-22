@@ -118,8 +118,16 @@ def render():
     alias = my_chain.alias if my_chain else None
     my_store = st.session_state.get('store', None)
     # Fetch fresh data for the selected chain and store
-    price_data = fresh_price_data(alias=alias, store_code=my_store) if alias and my_store else None
-    promo_data = fresh_promo_data(alias=alias, store_code=my_store) if alias and my_store else None
+    try:
+        # Get fresh price and promo data
+        price_data = fresh_price_data(alias=alias, store_code=my_store) if alias and my_store else None
+        promo_data = fresh_promo_data(alias=alias, store_code=my_store) if alias and my_store else None
+    except TypeError as e:
+        # Catch if data is getting updated on servers
+        price_data = None
+        promo_data = None
+        st.error('The selected supermarket chain is currently updating the data. '
+                 'Please try again in a few minutes.')
 
     if price_data:
         st.success('Your Data is Ready!')

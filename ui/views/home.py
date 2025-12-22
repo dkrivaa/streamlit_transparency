@@ -5,7 +5,7 @@ def options():
     """ Returns dict of options for home page navigation """
     return {
         0: {'icon': ':material/attach_money:', 'text': 'I am shopping', 'page': 'ui/views/check_price_1.py'},
-        1: {'icon': ':material/list:', 'text': 'Plan my shopping', 'page': 'ui/views/shopping_list.py'},
+        1: {'icon': ':material/list:', 'text': 'Plan my shopping', 'page': 'ui/views/shopping_list_1.py'},
     }
 
 

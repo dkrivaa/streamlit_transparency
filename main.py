@@ -33,7 +33,7 @@ check_price_page2 = st.Page(
 
 shopping_list_page = st.Page(
     title='Shopping List',
-    page='ui/views/shopping_list.py',
+    page='ui/views/shopping_list_1.py',
     icon=":material/list:",
 )
 
