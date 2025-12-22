@@ -9,7 +9,7 @@ def render():
     """ The main function to render the shopping list page 1 """
     with st.container():
         st.subheader('Make Shopping List')
-        st.write('Choose up to 3 supermarket chains')
+        st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
 
         for chain_num in range(1, 4):  # 1, 2, 3
             chain_key = f'chain{chain_num}'
