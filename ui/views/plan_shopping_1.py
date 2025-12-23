@@ -49,10 +49,16 @@ def render():
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
 
         # Render chain selection elements
-        chain_selection_element()
+        with st.form():
+            chain_selection_element()
 
-        st.write(st.session_state)
+            if st.form_submit_button('Continue'):
+                st.write(st.session_state)
 
+
+
+# "https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/v1551800922/prod/product_images/products_small/MIN24_S_P_61764_1.png"
+# "https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/v1551800922/prod/product_images/products_small/KOR54_S_P_8801055724284_1.png"
 
 if __name__ == "__main__":
     render()
