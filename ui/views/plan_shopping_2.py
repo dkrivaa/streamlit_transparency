@@ -48,7 +48,7 @@ def render():
                         )}"
                     ),
                     index=None,
-                    placeholder="Select Product Barcode",
+                    placeholder="Select Product to Add to Shopping List",
                 )
 
 
