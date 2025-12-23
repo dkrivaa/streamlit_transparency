@@ -40,14 +40,16 @@ def chain_selection_element():
                 )
 
                 if store:
+                    st.session_state[chain_key] = chain
+                    st.session_state[store_key] = store
                     st.session_state[f'alias{chain_num}'] = chain.alias
 
 
 def render():
     """ The main function to render the shopping planning page 1 """
     # clear cache
-    # fresh_price_data.clear()
-    # fresh_promo_data.clear()
+    fresh_price_data.clear()
+    fresh_promo_data.clear()
 
     with st.container():
         st.subheader('Plan Shopping')
