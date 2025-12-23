@@ -10,8 +10,8 @@ def chain_selection_element():
     """ Renders the supermarket chain selection element """
     for chain_num in range(1, 4):  # 1, 2, 3
         # Key names for selectboxes
-        chain_selectbox_key = f'chain{chain_num}'
-        store_selectbox_key = f'store{chain_num}'
+        chain_selectbox_key = f'chain_selectbox{chain_num}'
+        store_selectbox_key = f'store_selectbox{chain_num}'
         # key names for session state
         chain_key = f'chain{chain_num}'
         store_key = f'store{chain_num}'
