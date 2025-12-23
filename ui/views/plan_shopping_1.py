@@ -47,7 +47,6 @@ def render():
     # clear cache
     st.cache_data.clear()
 
-
     with st.container():
         st.subheader('Plan Shopping')
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')

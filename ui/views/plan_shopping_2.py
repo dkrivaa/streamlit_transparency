@@ -12,3 +12,7 @@ def render():
         st.title('Plan Shopping')
         st.subheader('Make Shopping List')
 
+
+
+if __name__ == "__main__":
+    render()
