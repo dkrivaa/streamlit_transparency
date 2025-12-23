@@ -67,6 +67,9 @@ def render():
 
             st.write(st.session_state.shoppinglist)
 
+            if st.button('Continue to Price Comparison'):
+                st.switch_page('ui/views/plan_shopping_3.py')
+
 
 
 
