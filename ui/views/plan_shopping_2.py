@@ -11,6 +11,7 @@ def render():
     with st.container():
         st.title('Plan Shopping')
         st.subheader('Make Shopping List')
+        st.divider()
 
 
 
