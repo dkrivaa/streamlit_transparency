@@ -44,6 +44,9 @@ def render():
         st.subheader('Make Shopping List')
         st.divider()
 
+        if 'shoppinglist' not in st.session_state:
+            st.session_state['shoppinglist'] = []
+
         st.write(st.session_state)
 
         # Fetch fresh data for the first selected chain and store
