@@ -16,6 +16,10 @@ def render():
 
         st.write(st.session_state)
 
+        chains = [chain for chain in list(st.session_state.keys()) if chain.startswith('chain')]
+
+        st.write(chains)
+
 
 if __name__ == "__main__":
     render()
