@@ -1,9 +1,6 @@
 import httpx
 import asyncio
 import streamlit as st
-import re
-
-from backend.data.super_class import SupermarketChain
 
 
 def run_async(coro, key: str = None, *args, **kwargs):
