@@ -49,7 +49,7 @@ def render():
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
 
         # Render chain selection elements
-        with st.form():
+        with st.form(key='chain_selection_form'):
             chain_selection_element()
 
             if st.form_submit_button('Continue'):
