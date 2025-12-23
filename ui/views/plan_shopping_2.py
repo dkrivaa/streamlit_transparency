@@ -65,6 +65,8 @@ def render():
                     st.session_state.shoppinglist.append(item)
                     st.success(f'Added {item} to shopping list!')
 
+    st.write(st.session_state.shoppinglist)
+
 
 if __name__ == "__main__":
     render()
