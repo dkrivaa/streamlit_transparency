@@ -41,10 +41,11 @@ def chain_element():
                 if store:
                     st.session_state[f'alias{chain_num}'] = chain.alias
 
+
 def render():
     """ The main function to render the shopping list page 1 """
     with st.container():
-        st.subheader('Make Shopping List')
+        st.subheader('Plan Shopping')
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
 
         chain_element()
