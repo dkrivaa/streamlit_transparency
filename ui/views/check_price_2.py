@@ -6,7 +6,7 @@ from backend.data.super_class import SupermarketChain
 
 
 
-@st.cache_data(ttl=1200)
+@st.cache_data(ttl=1800)
 def fresh_price_data(alias: str, store_code: str | int) -> dict | None:
     """ Fetch fresh data for the given chain and store code """
     # Get the supermarket chain class from its alias
@@ -23,7 +23,7 @@ def fresh_price_data(alias: str, store_code: str | int) -> dict | None:
     return price_data
 
 
-@st.cache_data(ttl=1200)
+@st.cache_data(ttl=1800)
 def fresh_promo_data(alias: str, store_code: str | int) -> dict | None:
     """ Fetch fresh data for the given chain and store code """
     # Get the supermarket chain class from its alias
