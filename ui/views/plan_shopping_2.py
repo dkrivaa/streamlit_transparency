@@ -6,6 +6,36 @@ from backend.data.super_class import SupermarketChain
 from backend.database.utilities import get_stores_for_chain
 
 
+def shoppinglist_element(price_data: dict):
+    """ Renders the shopping list element """
+    with st.form('shoppinglist form', clear_on_submit=True):
+        item = st.selectbox(
+            label='Select Barcode',
+            label_visibility='hidden',
+            options=sorted([d['ItemCode'] for d in price_data], key=int),
+            format_func=lambda x: (
+                f"{x} - "
+                f"{next(
+                    d.get('ItemPrice')
+                    for d in price_data
+                    if d.get('ItemCode') == x
+                )} ₪ - "
+                f"{next(
+                    d.get('ItemName') or d.get('ItemNm')
+                    for d in price_data
+                    if d.get('ItemCode') == x
+                )}"
+            ),
+            index=None,
+            placeholder="Add Product to Shopping List",
+        )
+
+        submitted = st.form_submit_button('Add to Shopping List')
+        if submitted and item:
+            st.session_state.shoppinglist.append(item)
+            st.success(f'Added {item} to shopping list!')
+
+
 def render():
     """ The main function to render the shopping planning page """
 
@@ -33,36 +63,11 @@ def render():
                      'Please try again in a few minutes.')
 
         if price_data1:
+            shoppinglist_element(price_data=price_data1)
 
-            with st.form('shoppinglist form', clear_on_submit=True):
+            st.write(st.session_state.shoppinglist)
 
-                item = st.selectbox(
-                            label='Select Barcode',
-                            label_visibility='hidden',
-                            options=sorted([d['ItemCode'] for d in price_data1], key=int),
-                            format_func=lambda x: (
-                                f"{x} - "
-                                f"{next(
-                                    d.get('ItemPrice')
-                                    for d in price_data1
-                                    if d.get('ItemCode') == x
-                                )} ₪ - "
-                                f"{next(
-                                    d.get('ItemName') or d.get('ItemNm')
-                                    for d in price_data1
-                                    if d.get('ItemCode') == x
-                                )}"
-                            ),
-                            index=None,
-                            placeholder="Add Product to Shopping List",
-                        )
 
-                submitted = st.form_submit_button('Add to Shopping List')
-                if submitted and item:
-                    st.session_state.shoppinglist.append(item)
-                    st.success(f'Added {item} to shopping list!')
-
-                    st.write(st.session_state.shoppinglist)
 
 
 if __name__ == "__main__":
