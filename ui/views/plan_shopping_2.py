@@ -50,7 +50,7 @@ def render():
                             d.get('ItemPrice')
                             for d in price_data1
                             if d.get('ItemCode') == x
-                        )} ₪"
+                        )} ₪ "
                     ),
                     index=None,
                     placeholder="Add Product to Shopping List",
