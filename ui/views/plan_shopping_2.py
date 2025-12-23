@@ -16,9 +16,6 @@ def render():
 
         st.write(st.session_state)
 
-        # Make session_state entry to hold shopping list barcodes
-        st.session_state.shoppinglist = []
-
         # Fetch fresh data for the first selected chain and store
         my_chain = st.session_state.get('chain1', None)
         alias = my_chain.alias if my_chain else None
