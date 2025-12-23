@@ -54,6 +54,8 @@ def render():
     # clear cache
     fresh_price_data.clear()
     fresh_promo_data.clear()
+    # clear session state
+    st.session_state.clear()
 
     with st.container():
         st.subheader('Plan Shopping')
