@@ -5,7 +5,7 @@ from backend.data.super_class import SupermarketChain
 from backend.database.utilities import get_stores_for_chain
 
 
-def chain_element():
+def chain_selection_element():
     """ Renders the supermarket chain selection element """
     for chain_num in range(1, 4):  # 1, 2, 3
         chain_key = f'chain{chain_num}'
@@ -48,7 +48,8 @@ def render():
         st.subheader('Plan Shopping')
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
 
-        chain_element()
+        # Render chain selection elements
+        chain_selection_element()
 
 
 if __name__ == "__main__":
