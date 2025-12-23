@@ -51,6 +51,8 @@ def render():
         # Render chain selection elements
         chain_selection_element()
 
+        st.write(st.session_state)
+
 
 if __name__ == "__main__":
     render()
