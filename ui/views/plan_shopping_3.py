@@ -6,3 +6,16 @@ from backend.data.super_class import SupermarketChain
 from backend.database.utilities import get_stores_for_chain
 
 
+def render():
+    """ The main function to render the shopping planning page 3 """
+
+    with st.container():
+        st.subheader('Plan Shopping - Step 3')
+        st.write('Review your shopping list and compare prices across selected supermarket chains.')
+        st.divider()
+
+        st.write(st.session_state)
+
+
+if __name__ == "__main__":
+    render()
