@@ -31,6 +31,7 @@ def render():
 
         # Navigate to selected page
         if selection is not None:
+            st.session_state.clear()
             st.switch_page(option_map[selection]['page'])
 
 
