@@ -37,26 +37,33 @@ def render():
 
         if price_data1:
 
-            item = st.selectbox(
-                        label='Select Barcode',
-                        label_visibility='hidden',
-                        options=sorted([d['ItemCode'] for d in price_data1], key=int),
-                        format_func=lambda x: (
-                            f"{x} - "
-                            f"{next(
-                                d.get('ItemPrice')
-                                for d in price_data1
-                                if d.get('ItemCode') == x
-                            )} ₪ - "
-                            f"{next(
-                                d.get('ItemName') or d.get('ItemNm')
-                                for d in price_data1
-                                if d.get('ItemCode') == x
-                            )}"
-                        ),
-                        index=None,
-                        placeholder="Add Product to Shopping List",
-                    )
+            with st.form('shoppinglist form', clear_on_submit=True):
+
+                item = st.selectbox(
+                            label='Select Barcode',
+                            label_visibility='hidden',
+                            options=sorted([d['ItemCode'] for d in price_data1], key=int),
+                            format_func=lambda x: (
+                                f"{x} - "
+                                f"{next(
+                                    d.get('ItemPrice')
+                                    for d in price_data1
+                                    if d.get('ItemCode') == x
+                                )} ₪ - "
+                                f"{next(
+                                    d.get('ItemName') or d.get('ItemNm')
+                                    for d in price_data1
+                                    if d.get('ItemCode') == x
+                                )}"
+                            ),
+                            index=None,
+                            placeholder="Add Product to Shopping List",
+                        )
+
+                submitted = st.form_submit_button('Add to Shopping List')
+                if submitted and item:
+                    st.session_state.shoppinglist.append(item)
+                    st.success(f'Added {item} to shopping list!')
 
 
 if __name__ == "__main__":
