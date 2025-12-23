@@ -33,7 +33,7 @@ def data():
         data = [d for d in price_data if
                 d['ItemCode'] in st.session_state.get('shoppinglist', [])] if price_data else []
         items[f'{st.session_state.get(alias_key)}-{st.session_state.get(store_key)}'] = data
-
+    #
     return items
 
 
