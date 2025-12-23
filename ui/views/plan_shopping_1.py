@@ -1,6 +1,7 @@
 import streamlit as st
 
 from backend.utilities.general import run_async
+from backend.utilities.fresh_data_funcs import fresh_price_data, fresh_promo_data
 from backend.data.super_class import SupermarketChain
 from backend.database.utilities import get_stores_for_chain
 
@@ -45,7 +46,8 @@ def chain_selection_element():
 def render():
     """ The main function to render the shopping planning page 1 """
     # clear cache
-    st.cache_data.clear()
+    fresh_price_data.clear()
+    fresh_promo_data.clear()
 
     with st.container():
         st.subheader('Plan Shopping')
