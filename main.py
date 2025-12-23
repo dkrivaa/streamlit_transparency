@@ -56,7 +56,7 @@ db_page = st.Page(
 )
 
 pages = [home_page, check_price_page1, check_price_page2, plan_shopping_page1, plan_shopping_page2,
-         plan_shopping_page2, db_page]
+         plan_shopping_page3, db_page]
 menu_pages = [home_page, ]
 pg = st.navigation(pages=pages, position='hidden')
 
