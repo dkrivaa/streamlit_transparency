@@ -31,9 +31,9 @@ check_price_page2 = st.Page(
     icon=":material/attach_money:",
 )
 
-shopping_list_page = st.Page(
-    title='Shopping List',
-    page='ui/views/shopping_list_1.py',
+plan_shopping_page1 = st.Page(
+    title='Plan Shopping',
+    page='ui/views/plan_shopping_1.py',
     icon=":material/list:",
 )
 
@@ -43,7 +43,7 @@ db_page = st.Page(
     icon=":material/data_table:",
 )
 
-pages = [home_page, check_price_page1, check_price_page2, shopping_list_page, db_page]
+pages = [home_page, check_price_page1, check_price_page2, plan_shopping_page1, db_page]
 menu_pages = [home_page, ]
 pg = st.navigation(pages=pages, position='hidden')
 

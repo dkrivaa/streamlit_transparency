@@ -43,7 +43,7 @@ def chain_selection_element():
 
 
 def render():
-    """ The main function to render the shopping list page 1 """
+    """ The main function to render the shopping planning page 1 """
     with st.container():
         st.subheader('Plan Shopping')
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
