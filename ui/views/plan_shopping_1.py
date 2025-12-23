@@ -40,8 +40,8 @@ def chain_selection_element():
                 )
 
                 if store:
-                    st.session_state[chain_key] = chain
-                    st.session_state[store_key] = store
+                    # st.session_state[chain_key] = chain
+                    # st.session_state[store_key] = store
                     st.session_state[f'alias{chain_num}'] = chain.alias
 
 
