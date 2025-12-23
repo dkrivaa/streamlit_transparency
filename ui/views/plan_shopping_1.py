@@ -58,8 +58,12 @@ def render():
         # Render chain selection elements
         chain_selection_element()
 
+        st.write(st.session_state)
+
         if st.button('Continue'):
             st.switch_page('ui/views/plan_shopping_2.py')
+
+
 
 
 if __name__ == "__main__":
