@@ -48,7 +48,7 @@ def render():
                         )}"
                     ),
                     index=None,
-                    placeholder="Select Product to Add to Shopping List",
+                    placeholder="Add Product to Shopping List",
                 )
 
 
