@@ -44,6 +44,11 @@ def chain_selection_element():
 
 def render():
     """ The main function to render the shopping planning page 1 """
+    # clear cache
+    st.cache_data.clear()
+    # clear session state
+    st.session_state.clear()
+
     with st.container():
         st.subheader('Plan Shopping')
         st.write('Choose up to 3 supermarket chains to compare prices when planning your shopping.')
@@ -52,12 +57,8 @@ def render():
         chain_selection_element()
 
         if st.button('Continue'):
-            st.write(st.session_state)
+            st.switch_page('ui/views/plan_shopping_2.py')
 
-
-
-# "https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/v1551800922/prod/product_images/products_small/MIN24_S_P_61764_1.png"
-# "https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/v1551800922/prod/product_images/products_small/KOR54_S_P_8801055724284_1.png"
 
 if __name__ == "__main__":
     render()
