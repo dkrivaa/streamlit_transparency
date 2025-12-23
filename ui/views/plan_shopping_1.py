@@ -9,6 +9,10 @@ from backend.database.utilities import get_stores_for_chain
 def chain_selection_element():
     """ Renders the supermarket chain selection element """
     for chain_num in range(1, 4):  # 1, 2, 3
+        # Key names for selectboxes
+        chain_selectbox_key = f'chain{chain_num}'
+        store_selectbox_key = f'store{chain_num}'
+        # key names for session state
         chain_key = f'chain{chain_num}'
         store_key = f'store{chain_num}'
 
@@ -21,7 +25,7 @@ def chain_selection_element():
                 options=sorted(SupermarketChain.registry, key=lambda x: x.alias),
                 format_func=lambda x: x.alias.capitalize(),
                 index=None,
-                key=chain_key,
+                key=chain_selectbox_key,
                 placeholder="Select Supermarket Chain",
             )
 
@@ -35,13 +39,13 @@ def chain_selection_element():
                     options=sorted(list(store_options.keys()), key=int),
                     format_func=lambda x: f'{x} - {store_options[x]}',
                     index=None,
-                    key=store_key,
+                    key=store_selectbox_key,
                     placeholder="Select Supermarket Store",
                 )
 
                 if store:
-                    # st.session_state[chain_key] = chain
-                    # st.session_state[store_key] = store
+                    st.session_state[chain_key] = chain
+                    st.session_state[store_key] = store
                     st.session_state[f'alias{chain_num}'] = chain.alias
 
 
