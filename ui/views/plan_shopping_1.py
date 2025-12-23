@@ -46,8 +46,7 @@ def render():
     """ The main function to render the shopping planning page 1 """
     # clear cache
     st.cache_data.clear()
-    # clear session state
-    st.session_state.clear()
+
 
     with st.container():
         st.subheader('Plan Shopping')
