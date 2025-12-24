@@ -34,7 +34,7 @@ def data():
         shopping_list_barcodes = [item['item'] for item in st.session_state.get('shoppinglist', [])]
         # Get item data for items in shopping list
         data = [d for d in price_data if
-                d['ItemCode'] in shopping_list_barcodes if price_data else []
+                d['ItemCode'] in shopping_list_barcodes] if price_data else []
         items[f'{st.session_state.get(alias_key)}-{st.session_state.get(store_key)}'] = data
     #
     return items
