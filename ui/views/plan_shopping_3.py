@@ -10,7 +10,7 @@ def data():
     """ Fetches data for shopping list from the selected stores """
     chains = [chain for chain in list(st.session_state.keys()) if chain.startswith('chain')]
     # Dict to hold items data per chain
-    items = {}
+    items = []
     # Fetch data for each selected store
     for num in range(len(chains)):
         chain_key = f'chain{num + 1}'
