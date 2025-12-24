@@ -10,7 +10,7 @@ def shoppinglist_element(price_data: dict):
     """ Renders the shopping list element """
     with st.form('shoppinglist form', clear_on_submit=True):
         item = st.selectbox(
-            label='Select Barcode',
+            label='Product',
             label_visibility='hidden',
             options=sorted([d['ItemCode'] for d in price_data], key=int),
             format_func=lambda x: (
@@ -32,7 +32,6 @@ def shoppinglist_element(price_data: dict):
 
         quantity = st.number_input(
             label='Quantity (units, kg, etc.)',
-            label_visibility='hidden',
             min_value=0.0,
             value=1.0,
             step=1.0,
