@@ -37,7 +37,7 @@ def data():
                 d['ItemCode'] in shopping_list_barcodes] if price_data else []
         # Add quantity to each item data
         for d in data:
-            d['Quantity'] = next(
+            d['demand'] = next(
                 item['quantity'] for item in st.session_state.get('shoppinglist', [])
                 if item['item'] == d['ItemCode']
             )

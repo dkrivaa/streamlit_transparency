@@ -29,7 +29,7 @@ def shoppinglist_element(price_data: dict):
             placeholder="Add Product to Shopping List",
         )
 
-        quantity = st.number_input(
+        demand = st.number_input(
             label='Quantity (units, kg, etc.)',
             min_value=0.0,
             value=1.0,
@@ -40,7 +40,7 @@ def shoppinglist_element(price_data: dict):
 
         submitted = st.form_submit_button('Add to Shopping List')
         if submitted and item:
-            st.session_state.shoppinglist.append({'item': item, 'quantity': quantity})
+            st.session_state.shoppinglist.append({'item': item, 'demand': demand})
             st.success(f'Added {item} to shopping list!')
 
 
