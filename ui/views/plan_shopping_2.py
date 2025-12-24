@@ -11,7 +11,6 @@ def shoppinglist_element(price_data: dict):
     with st.form('shoppinglist form', clear_on_submit=True):
         item = st.selectbox(
             label='Product',
-            label_visibility='hidden',
             options=sorted([d['ItemCode'] for d in price_data], key=int),
             format_func=lambda x: (
                 f"{x} - "
