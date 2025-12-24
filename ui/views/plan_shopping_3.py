@@ -38,7 +38,7 @@ def data():
         # Add quantity to each item data
         for d in data:
             d['demand'] = next(
-                item['quantity'] for item in st.session_state.get('shoppinglist', [])
+                item['demand'] for item in st.session_state.get('shoppinglist', [])
                 if item['item'] == d['ItemCode']
             )
         items[f'{st.session_state.get(alias_key)}-{st.session_state.get(store_key)}'] = data
