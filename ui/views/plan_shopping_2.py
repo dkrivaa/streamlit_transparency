@@ -40,7 +40,7 @@ def shoppinglist_element(price_data: dict):
 
         submitted = st.form_submit_button('Add to Shopping List')
         if submitted and item:
-            st.session_state.shoppinglist.append(item)
+            st.session_state.shoppinglist.append({'item': item, 'quantity': quantity})
             st.success(f'Added {item} to shopping list!')
 
 
