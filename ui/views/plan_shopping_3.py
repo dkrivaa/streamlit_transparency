@@ -47,9 +47,9 @@ def render():
 
         st.write(st.session_state)
 
-        items_data = data()
-
-        st.write(items_data)
+        # items_data = data()
+        #
+        # st.write(items_data)
 
 
 
