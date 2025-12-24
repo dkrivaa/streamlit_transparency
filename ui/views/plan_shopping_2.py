@@ -34,7 +34,7 @@ def shoppinglist_element(price_data: dict):
                         label='Quantity (units, kg, etc.)',
                         label_visibility='hidden',
                         min_value=0,
-                        value=1,
+                        value=1.0,
                         step=1,
                         format="%0.1f",
                         placeholder='Enter Quantity (units, kg, etc.)'
