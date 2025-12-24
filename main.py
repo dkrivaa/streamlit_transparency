@@ -32,19 +32,19 @@ check_price_page2 = st.Page(
 )
 
 plan_shopping_page1 = st.Page(
-    title='Plan Shopping',
+    title='Plan Shopping - Select Stores',
     page='ui/views/plan_shopping_1.py',
     icon=":material/list:",
 )
 
 plan_shopping_page2 = st.Page(
-    title='Plan Shopping',
+    title='Plan Shopping - Add Items',
     page='ui/views/plan_shopping_2.py',
     icon=":material/list:",
 )
 
 plan_shopping_page3 = st.Page(
-    title='Plan Shopping',
+    title='Plan Shopping - Compare Prices',
     page='ui/views/plan_shopping_3.py',
     icon=":material/list:",
 )
@@ -57,8 +57,12 @@ db_page = st.Page(
 
 pages = [home_page, check_price_page1, check_price_page2, plan_shopping_page1, plan_shopping_page2,
          plan_shopping_page3, db_page]
-menu_pages = [home_page, ]
+
 pg = st.navigation(pages=pages, position='hidden')
+if pg != plan_shopping_page3:
+    menu_pages = [home_page, ]
+else:
+    menu_pages = [home_page, plan_shopping_page2, ]
 
 # Create custom navigation with columns
 with st.container(border=True):
