@@ -30,6 +30,17 @@ def shoppinglist_element(price_data: dict):
             placeholder="Add Product to Shopping List",
         )
 
+        if item:
+            quantity = st.number_input(
+                            label='Quantity (units, kg, etc.)',
+                            label_visibility='hidden',
+                            min_value=0,
+                            value=1,
+                            step=1,
+                            format="%0.1f",
+                            placeholder='Enter Quantity (units, kg, etc.)'
+                        )
+
         submitted = st.form_submit_button('Add to Shopping List')
         if submitted and item:
             st.session_state.shoppinglist.append(item)
