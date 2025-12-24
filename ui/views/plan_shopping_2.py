@@ -74,7 +74,5 @@ def render():
                 st.switch_page('ui/views/plan_shopping_3.py')
 
 
-
-
 if __name__ == "__main__":
     render()
