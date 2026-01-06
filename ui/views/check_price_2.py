@@ -127,6 +127,7 @@ def render():
                 # Get promo details for item from promo data
                 item_promos = my_chain.get_shopping_promos(promo_data=promo_data, shoppinglist=[item],
                                                            blacklist=blacklist) if promo_data else None
+                st.write(item_promos)
                 # Show price
                 price_element(item, item_details)
 
