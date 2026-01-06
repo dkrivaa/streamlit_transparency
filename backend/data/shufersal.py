@@ -139,7 +139,7 @@ class Shufersal(SupermarketChain):
     @classmethod
     def promo_blacklist(cls) -> set[str]:
         """ Return list of promo blacklist PromotionId's - General promos that should be ignored """
-        return {"4305214"}
+        return {"4305214", "4327051"}
 
 
 
